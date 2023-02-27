@@ -4,8 +4,7 @@
 </svelte:head>
 
 <script lang="ts">
-	import Modal from './Modal.svelte';
-
+	import Modal from '../../components/popup/Modal.svelte';
 	let showModal: boolean  = false;
 
     function test(){
