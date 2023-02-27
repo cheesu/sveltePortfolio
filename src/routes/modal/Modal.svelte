@@ -1,9 +1,15 @@
-<script>
-	export let showModal; // boolean
+<script lang="ts">
+	export let showModal: boolean ; // boolean
 
-	let dialog; // HTMLDialogElement
+    console.log(showModal);
 
-	$: if (dialog && showModal) dialog.showModal();
+	let dialog: any; // HTMLDialogElement
+
+	$: if (dialog && showModal){ dialog.showModal(); console.log(showModal);}
+
+    $: if (dialog && !showModal){ dialog.close(); console.log(showModal);}
+
+    
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
