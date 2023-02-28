@@ -5,12 +5,12 @@
       {
         title: 'Card 1',
         imageUrl: 'https://picsum.photos/id/1/300/200',
-        description: 'This is the first card.'
+        description: '카드1'
       },
       {
         title: 'Card 2',
         imageUrl: 'https://picsum.photos/id/2/300/200',
-        description: 'This is the second card.'
+        description: '카드2'
       },
       {
         title: 'Card 3',
