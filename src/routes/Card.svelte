@@ -1,7 +1,7 @@
-<script>
-    export let title;
-    export let imageUrl;
-    export let description;
+<script lang="ts">
+    export let title:string;
+    export let imageUrl:string;
+    export let description:string;
   </script>
   
   <div class="bg-white rounded-lg overflow-hidden shadow-md w-1/2">
