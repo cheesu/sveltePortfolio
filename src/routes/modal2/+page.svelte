@@ -20,10 +20,7 @@
 </button>
 
 <Modal bind:showModal>
-	<h2 slot="header">
-		modal
-		<small><em>adjective</em> mod·al \ˈmō-dəl\</small>
-	</h2>
+	
 
 	<ol class="definition-list">
 

@@ -1,6 +1,44 @@
 <script lang="ts">
     import "../app.css";
+    import DropDownMenu from '../components/DropDownMenu.svelte';
+
 let topToggle : Boolean = false;
+
+interface MenuItem {
+    title: string;
+    url: string;
+    subMenuItems?: MenuItem[];
+  }
+
+  // 메뉴 아이템
+  const menuItems: MenuItem[] = [
+    { title: 'Home', url: '/' },
+    { title: 'modal', url: '/modal' },
+    {
+      title: 'About',
+      url: '#',
+      subMenuItems: [
+        { title: 'About us', url: '#' },
+        { title: 'Our team', url: '#' },
+        { title: 'Our story', url: '#' },
+      ],
+    },
+    
+  ];
+
+
+interface MenuItem {
+    title: string;
+    url: string;
+  }
+
+  // 메뉴 아이템
+  const userMenuList: MenuItem[] = [
+      { title: 'my blog', url: 'https://yamea-guide.tistory.com/' },
+        { title: 'Our team', url: '#' },
+        { title: 'Our story', url: '#' }
+  ];
+
 
 </script>
   
@@ -15,6 +53,8 @@ let topToggle : Boolean = false;
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+
+                <!--
                 <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>
 
                 <a href="modal" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Modal</a>
@@ -28,7 +68,20 @@ let topToggle : Boolean = false;
   
                 <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</a>
 
-                
+                -->
+
+                <!-- 메뉴 -->
+                <ul class="flex">
+                  {#each menuItems as item}
+                    <li class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium relative">
+                      {#if item.subMenuItems}
+                        <DropDownMenu subMenuItems={item.subMenuItems} menuTitle = {item.title}/>
+                      {:else}
+                        <a href={item.url}>{item.title}</a>
+                      {/if}
+                    </li>
+                  {/each}
+                </ul>
               
               </div>
             </div>
@@ -62,17 +115,17 @@ let topToggle : Boolean = false;
                   From: "transform opacity-100 scale-100"
                   To: "transform opacity-0 scale-95"
               -->
-
-              {#if topToggle}
+              
+             
+              <!--{#if topToggle}
                 <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                  <!-- Active: "bg-gray-100", Not Active: "" -->
                   <a href="https://yamea-guide.tistory.com/" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">my blog</a>
 
                   <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
 
                   <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                 </div>
-              {/if}
+              {/if}-->
   
               </div>
             </div>
