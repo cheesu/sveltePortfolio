@@ -5,7 +5,7 @@
       {
         title: 'Card 1',
         imageUrl: 'https://picsum.photos/id/1/300/200',
-        description: '카드1111'
+        description: '카드 깃 배포 테스트'
       },
       {
         title: 'Card 2',
