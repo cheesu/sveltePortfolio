@@ -92,9 +92,10 @@ jobs:
           port: ${{ secrets.AWS_SSH_PORT }}
           script_stop: true
           script: |
-            cd my-project
-            npm ci
-            npm run build
+            docker-compose down
+            docker rmi ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }}
+            docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }}
+            docker-compose up -d
 
       - name: Remove Github Actions IP From Security Group
         run: |
