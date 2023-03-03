@@ -18,7 +18,7 @@
 <h1> 스벨트 테스트 22222</h1>
 
 
-<h2> tailwind test </h2>
+<h2> tailwind test 테테테테스트</h2>
 
 <button on:click={() => (showModal = true)}
     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
