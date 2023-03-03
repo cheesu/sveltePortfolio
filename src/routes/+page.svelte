@@ -5,7 +5,7 @@
       {
         title: 'Card 1',
         imageUrl: 'https://picsum.photos/id/1/300/200',
-        description: '카드1'
+        description: '카드1111'
       },
       {
         title: 'Card 2',
