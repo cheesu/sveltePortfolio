@@ -1,4 +1,4 @@
-# Node.js 16 버전을 사용합니다.
+# Node.js 18 버전을 사용합니다.
 FROM node:18
 
 # 앱 디렉터리를 만듭니다.
@@ -15,4 +15,5 @@ RUN npm run build
 
 
 # 앱 실행을 위한 명령어를 지정합니다.
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "start", "--", "--host"]
+
