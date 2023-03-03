@@ -34,7 +34,7 @@ env:
   ECR_REGISTRY: 666460501111.dkr.ecr.us-east-2.amazonaws.com
   ECR_REPOSITORY: cheesu
   AWS_REGION: us-east-2
-  IMG_TAG: lastes
+  IMG_TAG: latest
 
 jobs:
   push:
