@@ -92,6 +92,7 @@ jobs:
           port: ${{ secrets.AWS_SSH_PORT }}
           script_stop: true
           script: |
+            aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }}
             docker-compose down
             docker rmi ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }}
             docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }}
