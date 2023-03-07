@@ -10,7 +10,7 @@
 </script>
 
 
-<h1> 스벨트 </h1>
+<h1> 스벨트 test </h1>
 
 
 <h2> tailwind test </h2>
