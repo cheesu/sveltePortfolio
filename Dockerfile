@@ -13,5 +13,13 @@ RUN npm install
 # 앱을 빌드합니다.
 RUN npm run build
 
+#pm2 node 실행을 위해 설치 
+RUN npm install --global pm2  
+
+#pm2 node 실행
+RUN pm2 start ./build/index.js
+
+
+
 # 앱을 빌드합니다.
-CMD ["npm", "run", "start", "--", "--host"]
+#CMD ["npm", "run", "start", "--", "--host"]
