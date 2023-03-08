@@ -33,7 +33,7 @@ on:
 env:
   ECR_REGISTRY: 666460501111.dkr.ecr.us-east-2.amazonaws.com
   ECR_REPOSITORY: cheesu
-  ECR_REPOSITORY_NGINX: cheesu
+  ECR_REPOSITORY_NGINX: nginx
   AWS_REGION: us-east-2
   IMG_TAG: latest
 
