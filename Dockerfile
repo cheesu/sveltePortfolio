@@ -14,7 +14,22 @@ RUN npm install
 RUN npm run build
 
 
+# Create a new image using Nginx
+FROM nginx:latest
+
+# Copy the built app from the first stage to the second stage
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Copy the Nginx configuration file
+COPY /nginx/default.conf /etc/nginx/conf.d/default.conf
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
+
 # 앱 실행을 위한 명령어를 지정합니다.
 #CMD ["npm", "run", "start", "--", "--host"]
-CMD [ "npm", "run", "build" ]
+#CMD [ "npm", "run", "build" ]
 

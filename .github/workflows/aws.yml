@@ -33,7 +33,6 @@ on:
 env:
   ECR_REGISTRY: 666460501111.dkr.ecr.us-east-2.amazonaws.com
   ECR_REPOSITORY: cheesu
-  ECR_REPOSITORY_NGINX: nginx
   AWS_REGION: us-east-2
   IMG_TAG: latest
 
@@ -57,7 +56,6 @@ jobs:
     - name: Build Docker image
       run: |
         docker build -t ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }} .
-        docker build -t ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY_NGINX }}:${{ env.IMG_TAG }} .
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -66,9 +64,7 @@ jobs:
     - name: Push Docker image to ECR
       run: |
         docker tag ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }} ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }}
-        docker tag ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY_NGINX }}:${{ env.IMG_TAG }} ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY_NGINX }}:${{ env.IMG_TAG }}
         docker push ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }}
-        docker push ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY_NGINX }}:${{ env.IMG_TAG }}
 
   deploy:
     needs: push
@@ -102,7 +98,6 @@ jobs:
             aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }}
             docker-compose down --rmi all
             docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }}
-            docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY_NGINX }}:${{ env.IMG_TAG }}
             docker-compose up -d
 
 
@@ -120,9 +115,7 @@ jobs:
             sudo service docker start
             docker-compose down
             docker rmi ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }}
-            docker rmi ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY_NGINX }}:${{ env.IMG_TAG }}
             docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }}
-            docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY_NGINX }}:${{ env.IMG_TAG }}
             docker-compose up -d
             
 
