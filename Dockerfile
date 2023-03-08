@@ -16,6 +16,8 @@ RUN npm run build
 FROM nginx:1.19-alpine
 COPY --from=build /app/public /usr/share/nginx/html
 
+CMD [ "npm", "run", "build" ]
+
 # 앱 실행을 위한 명령어를 지정합니다.
 #CMD ["npm", "run", "start", "--", "--host"]
 #CMD [ "npm", "run", "build" ]
