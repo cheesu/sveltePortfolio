@@ -100,7 +100,7 @@ jobs:
           script_stop: true
           script: |
             aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }}
-             aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY_NGINX }}
+            aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY_NGINX }}
             docker-compose down
             docker rmi ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }}
             docker rmi ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY_NGINX }}:${{ env.IMG_TAG }}
@@ -120,6 +120,7 @@ jobs:
           script_stop: true
           script: |
             aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }}
+            aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY_NGINX }}
             sudo service docker start
             docker-compose down
             docker rmi ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }}
