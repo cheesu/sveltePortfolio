@@ -17,8 +17,8 @@ RUN npm run build
 RUN npm install --global pm2  
 
 #pm2 node 실행
-RUN pm2 start ./build/index.js
-#CMD ["pm2", "start", "./build/index.js"]
+#RUN pm2 start ./build/index.js
+CMD ["pm2-runtime", "start", "./build/index.js"]
 
 
 # 앱을 빌드합니다.
