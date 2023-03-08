@@ -23,7 +23,7 @@ FROM nginx:latest
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # 빌드된 앱을 Nginx에 복사합니다.
-COPY --from=build /app/public /usr/share/nginx/html
+COPY --from=build /app/build /usr/share/nginx/html
 
 # 컨테이너 시작 시 Nginx를 실행합니다.
 CMD ["nginx", "-g", "daemon off;"]
