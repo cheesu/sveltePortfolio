@@ -9,10 +9,7 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter({
-			// Specify the port number
-			port: 5173
-		})
+		adapter: adapter()
 	}
 };
 
