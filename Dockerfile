@@ -24,9 +24,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # 빌드된 앱을 Nginx에 복사합니다.
 
-COPY --from=builder /usr/src/app/build .
-COPY --from=builder /usr/src/app/package.json .
-COPY --from=builder /usr/src/app/node_modules ./node_modules
+COPY --from=build /app/.svelte-kit /usr/share/nginx/html
 
 # 컨테이너 시작 시 Nginx를 실행합니다.
 CMD ["nginx", "-g", "daemon off;"]
