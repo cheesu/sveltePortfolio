@@ -14,17 +14,4 @@ RUN npm install
 COPY . .
 
 # 앱을 빌드합니다.
-RUN npm run build
-
-# Nginx 이미지를 사용합니다.
-FROM nginx:latest
-
-# Nginx 설정 파일을 복사합니다.
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# 빌드된 앱을 Nginx에 복사합니다.
-
-COPY --from=build /app/.svelte-kit /usr/share/nginx/html
-
-# 컨테이너 시작 시 Nginx를 실행합니다.
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "run", "start", "--", "--host"]
