@@ -13,7 +13,7 @@ RUN npm install
 # 앱을 빌드합니다.
 RUN npm run build
 
-FROM nginx:1.19-alpine
+FROM nginx:latest
 COPY --from=build /app/public /usr/share/nginx/html
 
 CMD [ "npm", "run", "build" ]
