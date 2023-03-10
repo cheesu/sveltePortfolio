@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Card from './Card.svelte';
+    import Card from '$components/card/Card.svelte';
   
     export let cards:any[] = [];
   </script>

@@ -1,14 +1,10 @@
 <script lang="ts">
-    import CardList from './CardList.svelte';
+    import CardList from '$components/card/CardList.svelte';
     import type { PageData } from './$types';
-	export let data: PageData;
-  $: ({ postArr} = data);
-
-
+	  export let data: PageData;
+    $: ({ postArr} = data);
 
   console.log(data.postArr);
-
-  console.log(postArr);
 
   interface postItem {
     title: string;

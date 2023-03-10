@@ -1,1 +1,2 @@
-import { dev } from '$app/environment';
+export {}; // 파일을 명시적으로 모듈로 만듦
+
