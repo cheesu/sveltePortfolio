@@ -53,6 +53,16 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
+    # Github Repository Secrets를 통해 환경 변수 파일을 생성합니다.
+    - name: Generate Environment Variables File for Production
+      run: |
+        echo "CLIENT_ID=$TISTORY_APP_ID" >> .env
+        echo "SC_KEY=$TISTORY_SC_KEY" >> .env
+      env:
+        TISTORY_APP_ID: ${{ secrets.TISTORY_APP_ID }}
+        TISTORY_SC_KEY: ${{ secrets.TISTORY_SC_KEY }}
+
+
     - name: Build Docker image
       run: |
         docker build -t ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMG_TAG }} .

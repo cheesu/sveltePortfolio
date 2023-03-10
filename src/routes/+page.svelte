@@ -1,6 +1,11 @@
-<script>
+<script lang="ts">
     import CardList from './CardList.svelte';
-  
+    import type { PageData } from './$types';
+	export let data: PageData;
+  $: ({ test } = data);
+
+  console.log(data);
+
     const cards = [
       {
         title: 'Card 1',
@@ -24,5 +29,5 @@
       }
     ];
   </script>
-  
+  <div></div>
   <CardList cards={cards} />
