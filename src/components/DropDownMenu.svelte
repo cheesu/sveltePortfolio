@@ -35,8 +35,6 @@
 </script>
 
 <div class="dropdown-menu">
-
-    
   <button
     class="block w-full text-left py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
     on:click={toggle}
