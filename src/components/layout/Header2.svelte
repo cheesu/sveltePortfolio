@@ -10,18 +10,28 @@
   
     const menuItems: MenuItem[] = [
       { title: "Home", url: "/" },
-      { title: "About", url: "#", subMenuItems: [
-        { title: 'About us', url: '#' },
-        { title: 'Our team', url: '#' },
-        { title: 'Our story', url: '#' }
-      ] },
+      { title: "Blog", url: "/" },
+      { title: "Youtube", url: "/" },
+      { title: "SNS", url: "/" },
       { title: "Contact", url: "/contact" },
     ];
   
     const isMenuOpen = writable(false);
+    const isMobileMenuOpen = writable(false);
   
     function handleClick() {
-      isMenuOpen.update((value) => !value);
+      isMobileMenuOpen.update((value) => !value);
+
+        if(isMobileMenuOpen){
+          console.log("testsetsetsertset");
+          const parentElement:any = document.querySelector('#headerNav');
+          let parentHeight:string = parentElement.offsetHeight+"px";
+          const topN:any =  document.querySelector('#topNav');
+          topN.style.top = parentHeight;
+
+          console.log(topN);
+        }
+
     }
   
     function handleMouseEnter() {
@@ -37,13 +47,17 @@
       window.addEventListener("click", () => {
         isMenuOpen.set(false);
       });
+      
     });
+
+     
+
   </script>
 
   
-<header class="bg-gray-800 text-white">
-    <div class="container mx-auto py-4 px-6 flex justify-between items-center">
-      <a href="/" class="text-2xl font-bold">Logo</a>
+<header id="headerNav" class="sticky top-0 w-full bg-gray-800 text-white">
+    <div class="container mx-auto py-4 px-6 flex justify-between items-center mx-auto max-w-7xl  sm:px-6 lg:px-8 s-7IPF32Wcq3s8">
+      <a href="/" class="text-2xl font-bold">In-studio</a>
       <button
         class="md:hidden"
         on:click={handleClick}
@@ -57,35 +71,16 @@
           <path d="M0 3h20v2H0zM0 9h20v2H0zM0 15h20v2H0z" />
         </svg>
       </button>
-      <nav class="hidden md:block">
-        <ul class="flex">
+      <nav id="topNav" class={
+        ` ${
+          $isMobileMenuOpen ? "fixed bg-gray-800 left-0 h-full w-full pt-5 md:block" : "hidden md:block"
+        }`
+      }>
+        <ul class="text-center md:flex">
           {#each menuItems as item}
-            {#if item.subMenuItems}
-              <li
-                class="relative mr-6"
-                on:mouseenter={handleMouseEnter}
-                on:mouseleave={handleMouseLeave}
-              >
-                <a href="/" class="hover:text-gray-400">{item.title}</a>
-                <ul
-                  class={
-                    `absolute top-full left-0 bg-gray-800 text-white py-2 px-4 mt-2 rounded shadow-md transition-all duration-300 ${
-                      $isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-                    }`
-                  }
-                >
-                  {#each item.subMenuItems as subItem}
-                    <li>
-                      <a href={subItem.url} class="hover:text-gray-400">{subItem.title}</a>
-                    </li>
-                  {/each}
-                </ul>
+              <li class="mt-7 pl-4 pr-4 md:pl-4 pr-4 md:mt-0">
+                <a href={item.url} class=" hover:text-gray-400 ">{item.title}</a>
               </li>
-            {:else}
-              <li class="mr-6">
-                <a href={item.url} class="hover:text-gray-400">{item.title}</a>
-              </li>
-            {/if}
           {/each}
         </ul>
       </nav>
