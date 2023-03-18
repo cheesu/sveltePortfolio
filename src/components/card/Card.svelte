@@ -11,7 +11,7 @@
     }
   </script>
   
-  <div class="bg-white hover:cursor-pointer rounded-lg overflow-hidden shadow-md w-1/2" on:click={hrefLink} on:keydown={hrefLink} >
+  <div class="bg-white w-full mb-10 hover:cursor-pointer rounded-lg overflow-hidden shadow-md md:w-2/3" on:click={hrefLink} on:keydown={hrefLink} >
     <img class="w-full h-40 object-cover" src={imageUrl} alt={title} />
     <div class="p-4">
       <h3 class="text-lg font-medium mb-2">{title}</h3>

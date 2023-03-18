@@ -10,7 +10,7 @@
   
     const menuItems: MenuItem[] = [
       { title: "Home", url: "/" },
-      { title: "Blog", url: "/" },
+      { title: "Blog", url: "/blog" },
       { title: "Youtube", url: "/" },
       { title: "SNS", url: "/" },
       { title: "Contact", url: "/contact" },
