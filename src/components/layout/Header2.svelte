@@ -55,9 +55,9 @@
   </script>
 
   
-<header id="headerNav" class="sticky top-0 w-full bg-gray-800 text-white">
+<header id="headerNav" class="sticky top-0 w-full bg-black text-white shadow-red-700 shadow-sm">
     <div class="container mx-auto py-4 px-6 flex justify-between items-center mx-auto max-w-7xl  sm:px-6 lg:px-8 s-7IPF32Wcq3s8">
-      <a href="/" class="text-2xl font-bold">In-studio</a>
+      <a href="/" class="text-2xl font-nanumb font-bold">In <span class="text-red-500">S</span>tudio</a>
       <button
         class="md:hidden"
         on:click={handleClick}
@@ -79,7 +79,7 @@
         <ul class="text-center md:flex">
           {#each menuItems as item}
               <li class="mt-7 pl-4 pr-4 md:pl-4 pr-4 md:mt-0">
-                <a href={item.url} class=" hover:text-gray-400 ">{item.title}</a>
+                <a href={item.url} class="font-bold hover:text-red-500 ">{item.title}</a>
               </li>
           {/each}
         </ul>

@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "nanum";
+    src: url("./fonts/NanumSquareOTF_acR.otf");
+  }
+
+@font-face {
+    font-family: "nanumb";
+    src: url("./fonts/NanumSquareEB.otf");
+}
