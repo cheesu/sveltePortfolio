@@ -9,6 +9,12 @@ module.exports = {
       
         nanumb: ["nanumb", "sans-serif"],
         nanum: ["nanum", "sans-serif"],
+      },
+      width: {
+        '120': '120px', // w-600px 클래스 추가
+      },
+      colors: {
+        dark: 'rgb(33, 33, 33)',
       }
     },
   },

@@ -50,6 +50,10 @@
   </style>
 
   <div >
+
+    <div id="mainView">
+      <img src="https://t1.daumcdn.net/brunch/service/user/8tUw/image/k5FnN2MO6Oo6IpAthlDotbzNg3c.jpg"> 
+    </div>
     
 
     <div class="grid justify-items-center grid-cols-1  md:grid-cols-2">
@@ -74,6 +78,38 @@
         <!-- svelte-ignore a11y-missing-attribute -->
         <img src="https://t1.daumcdn.net/brunch/service/user/8tUw/image/k5FnN2MO6Oo6IpAthlDotbzNg3c.jpg"> 
       </div>
+
+      <div class="mt-10 md:mt-0">
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <img src="https://t1.daumcdn.net/brunch/service/user/8tUw/image/k5FnN2MO6Oo6IpAthlDotbzNg3c.jpg"> 
+      </div>
+
+      <div class="mt-10 md:mt-0">
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <img src="https://t1.daumcdn.net/brunch/service/user/8tUw/image/k5FnN2MO6Oo6IpAthlDotbzNg3c.jpg"> 
+      </div>
+
+      <div class="mt-10 md:mt-0">
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <img src="https://t1.daumcdn.net/brunch/service/user/8tUw/image/k5FnN2MO6Oo6IpAthlDotbzNg3c.jpg"> 
+      </div>
+      <div class="mt-10 md:mt-0">
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <img src="https://t1.daumcdn.net/brunch/service/user/8tUw/image/k5FnN2MO6Oo6IpAthlDotbzNg3c.jpg"> 
+      </div>
+      <div class="mt-10 md:mt-0">
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <img src="https://t1.daumcdn.net/brunch/service/user/8tUw/image/k5FnN2MO6Oo6IpAthlDotbzNg3c.jpg"> 
+      </div>
+      <div class="mt-10 md:mt-0">
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <img src="https://t1.daumcdn.net/brunch/service/user/8tUw/image/k5FnN2MO6Oo6IpAthlDotbzNg3c.jpg"> 
+      </div>
+      <div class="mt-10 md:mt-0">
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <img src="https://t1.daumcdn.net/brunch/service/user/8tUw/image/k5FnN2MO6Oo6IpAthlDotbzNg3c.jpg"> 
+      </div>
+
 
   
       
