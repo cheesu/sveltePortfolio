@@ -71,12 +71,9 @@
       const typing = async () => {  
         // 기존코드에서 개행치환코드 추가
         const letter = changeLineBreak(letters[i].split(""));
-        console.log(letter);
-
         while (letter.length) {
           await wait(speed);
           if(typingPEl){
-            
             typingPEl.innerHTML += letter.shift(); 
           }
         }
@@ -163,7 +160,7 @@
 
 
         <div id="seView" class="absolute right-full h-full w-full bg-dark flex">
-          <p id="typingP" class="m-auto text-6xl font-nanumb font-bold text-white  md:text-9xl"></p>
+          <p id="typingP" class="m-auto text-6xl font-nanumb font-bold  bg-gradient-to-r from-red-400 to-white via-blue-500 text-transparent bg-clip-text animate-gradient-x  md:text-9xl"></p>
         </div>
       </div>
 
