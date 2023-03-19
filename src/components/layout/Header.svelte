@@ -149,7 +149,7 @@
   </script>
 
   
-<header id="headerNav" class="fixed top-0 w-full text-white ">
+<header id="headerNav" class="fixed top-0 w-full text-white z-10">
   <div class="mx-auto py-4 flex justify-between items-center mx-aut w-full  sm: lg: s-7IPF32Wcq3s8">
     <a id="headerLogo" href="/" class="text-2xl font-nanumb font-bold w-120 mx-5 md:mx-10">In <span class="text-red-500">S</span>tudio</a>
     <button

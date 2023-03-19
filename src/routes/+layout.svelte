@@ -11,11 +11,9 @@
     <main>
       <div class="mx-auto">
         <!-- Replace with your content -->
-        <div>
           <div class="h-auto">
             <slot />
           </div>
-        </div>
         <!-- /End replace -->
       </div>
     </main>
