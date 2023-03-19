@@ -109,7 +109,7 @@
         }
         
         // 잠시 대기
-        await wait(800);
+        await wait(500);
         // 지우는 효과
         remove();
       }
@@ -216,7 +216,7 @@
       <div class="w-full">
         <ul class="grid justify-items-center my-20 grid-cols-2 grid-gap-2 md:grid-cols-6 ">
           {#each feIconArr as item}
-            <li class="my-10 "><img style="height:120px;" class="w-full h-full" src={path+item} alt="test"></li>
+            <li class="my-10" style="width: 120px;"><img  class="w-full h-full" src={path+item} alt="test"></li>
           {/each}
         </ul>
       </div>
