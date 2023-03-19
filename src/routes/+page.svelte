@@ -1,15 +1,16 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
+  
 
-  const firstMsgArr:string[] = ["web","deveoper"];
+  const firstMsgArr:string[] = ["I'm","web","deveoper"];
   const colorBoxArr:careerBox[] = [
     {
     value : "8 years",
     title : "total career"
     },
     {
-    value : "14 Project",
+    value : "24 Project",
     title : "total Project"
     },
     {
@@ -23,9 +24,17 @@
     value: string;
     title: string;
   }
+  
+  const path = "src/icon/"
 
+  const feIconArr:string[] = ["svelte.svg","react.svg","typescript.svg","html5.png" ,"javascript.png","css3.png",
+                              "jquery.png", 
+                              "oracle.png","mysql.svg","mongo.png","mssql.png", "maria.png",
+                              "java.png", "spring.png","springboot.png",
+                              "node.png", "tailwind.png", "materialize.png", 
 
-  const feIconArr:string[] = ["","","","","","","","","","","","","","","","","",""];
+                              "git.svg","github.svg","docker.svg","aws.svg",
+                              ];
   
 
   onMount(() => {
@@ -40,7 +49,7 @@
     msgSet();
     const myTimer = setInterval(function():void {
       msgSet();
-    }, 150);
+    }, 200);
 
     function msgSet():void{
       const newLi : HTMLElement = document.createElement("li"); // 새로운 li 요소 생성
@@ -76,7 +85,8 @@
       // 글자 모음 - 개행문자(\n)로 줄바꿈
       const letters:string[] = [
         "The \n CREATIVE!",
-        "DEVEOPER \n IN CHEESU"
+        "DEVEOPER \n IN CHEESU",
+        "이 페이지는 \n CSS와 JAVASCRIPT 만으로 \n 제작되었습니다."
       ];
 
       // 글자 입력 속도
@@ -159,7 +169,7 @@
 
     .first-animate {
     animation-name: blankani; 
-    animation-duration: 0.1s;
+    animation-duration: 0.12s;
     animation-iteration-count: 12;
     animation-delay: 0s;
     }
@@ -174,7 +184,7 @@
     <div id="mainView" class="h-screen w-full">
       <div class="h-full w-full bg-dark flex first-animate">
         <ul id="firstUl" class="m-auto text-6xl font-nanumb font-bold text-white md:text-9xl" >
-          <li>I'm</li>
+          
         </ul>
       </div>
       <div id="seView" class="absolute top-0 right-full h-full w-full bg-dark flex">
@@ -204,9 +214,9 @@
       <h2 class="m-10  break-keep text-4xl text-center font-nanumb md:text-5xl"> 프로젝트 스타일별 맞춤화된 개발 능력 </h2>
 
       <div class="w-full">
-        <ul class="grid justify-items-center my-20 grid-cols-1 grid-gap-2 md:grid-cols-6 ">
+        <ul class="grid justify-items-center my-20 grid-cols-2 grid-gap-2 md:grid-cols-6 ">
           {#each feIconArr as item}
-            <li class="my-10 bg-dark"><img style="height: 120px; width: 120px;" class="w-full h-full" src={item} alt="test"></li>
+            <li class="my-10 "><img style="height:120px;" class="w-full h-full" src={path+item} alt="test"></li>
           {/each}
         </ul>
       </div>
@@ -216,21 +226,6 @@
     
 
     <div class="grid justify-items-center grid-cols-1  md:grid-cols-2">
-      <div>
-        <h1 class="text-6xl font-bold bg-gradient-to-r from-red-400 to-white via-blue-500 text-transparent bg-clip-text animate-gradient-x">
-          I<span class="text-red-500">'</span>m
-        <br>
-        web developer<span class="text-red-500">.</span>
-        </h1>
-        <div class="mt-10 h-1/2 flex items-center justify-center ">
-          <p class="font-nanum text-l w-full pr-10">
-            안녕하세요 개발자 인치수 입니다. JavaScript, HTML, CSS를 주력으로 사용하여 웹사이트를 개발합니다. 협업을 중요하게 생각하며, 함께 일하는 동료와의 소통을 잘합니다.
-            <br>
-            <br>
-              이 사이트는 svelteKit, tailwind Css, gitAction, docker, ec2 를 활용하여 제작되었습니다.
-          </p>
-        </div>
-      </div>
       
       <div class="mt-10 md:mt-0">
         <!-- svelte-ignore a11y-missing-attribute -->
@@ -268,9 +263,6 @@
         <img src="https://t1.daumcdn.net/brunch/service/user/8tUw/image/k5FnN2MO6Oo6IpAthlDotbzNg3c.jpg"> 
       </div>
 
-
-  
-      
     </div>
 
     
