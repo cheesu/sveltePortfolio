@@ -3,6 +3,29 @@
   import { writable } from "svelte/store";
 
   const firstMsgArr:string[] = ["web","deveoper"];
+  const colorBoxArr:careerBox[] = [
+    {
+    value : "8 years",
+    title : "total career"
+    },
+    {
+    value : "14 Project",
+    title : "total Project"
+    },
+    {
+    value : "13",
+    title : "Digtal Content"
+    }
+
+  ];
+
+  interface careerBox {
+    value: string;
+    title: string;
+  }
+
+
+  const feIconArr:string[] = ["","","","","","","","","","","","","","","","","",""];
   
 
   onMount(() => {
@@ -42,10 +65,7 @@
         seViewEl.style.right = "0px";
         seViewEl.style.transitionDuration = "1s";
         seViewEl.style.transform = `translateX(-0px)`;
-
-        setTimeout(() => {
-          stratTyping();
-        }, 500);
+        stratTyping();
       }
     }
 
@@ -151,21 +171,48 @@
   </style>
 
   <div >
-
     <div id="mainView" class="h-screen w-full">
       <div class="h-full w-full bg-dark flex first-animate">
         <ul id="firstUl" class="m-auto text-6xl font-nanumb font-bold text-white md:text-9xl" >
           <li>I'm</li>
         </ul>
-
-
-        <div id="seView" class="absolute right-full h-full w-full bg-dark flex">
-          <p id="typingP" class="m-auto text-6xl font-nanumb font-bold  bg-gradient-to-r from-red-400 to-white via-blue-500 text-transparent bg-clip-text animate-gradient-x  md:text-9xl"></p>
-        </div>
       </div>
-
-
+      <div id="seView" class="absolute top-0 right-full h-full w-full bg-dark flex">
+        <p id="typingP" class="m-auto text-6xl font-nanumb font-bold bg-gradient-to-r from-red-400 to-white via-blue-500 text-transparent bg-clip-text animate-gradient-x  md:text-9xl"></p>
+      </div>
     </div>
+
+    <div class="w-full">
+      <p class="m-10 text-2xl font-nanum font-bold text-black whitespace-pre-wrap break-keep md:text-4xl md:mt-20">
+        변화하는 미디어 시대에 가장 최적화된 개발자
+      </p>
+      <p class="m-10 text-4xl font-nanumb font-bold text-black whitespace-pre-wrap break-keep md:text-6xl">
+        Global No.1 <br>Personal Digital Content Studio
+      </p>
+    </div>
+
+    <div class="w-full grid justify-items-center my-20 grid-cols-1 bg-gradient-to-br from-blue-400 to-yellow-300 via-green-500 md:grid-cols-3">
+      {#each colorBoxArr as item}
+        <div class="m-10  md:md-20 md:my-40">
+          <p class="text-white text-center text-5xl font-nanumb md:text-7xl">{item.value}</p>
+          <p class="text-gray-200 text-center text-2xl font-nanum mt-5 md:text-xl">{item.title}</p>
+        </div>
+      {/each}
+    </div>
+
+    <div class="my-20">
+      <h2 class="m-10  break-keep text-4xl text-center font-nanumb md:text-5xl"> 프로젝트 스타일별 맞춤화된 개발 능력 </h2>
+
+      <div class="w-full">
+        <ul class="grid justify-items-center my-20 grid-cols-1 grid-gap-2 md:grid-cols-6 ">
+          {#each feIconArr as item}
+            <li class="my-10 bg-dark"><img style="height: 120px; width: 120px;" class="w-full h-full" src={item} alt="test"></li>
+          {/each}
+        </ul>
+      </div>
+    </div>
+
+
     
 
     <div class="grid justify-items-center grid-cols-1  md:grid-cols-2">
