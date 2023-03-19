@@ -25,7 +25,7 @@
        }
        return postData;
   });
-// /<h1 class="h-1/2 text-4xl font-nanumb font-bold  bg-gradient md:text-7xl w-full block ">
+
 
   </script>
 
@@ -41,7 +41,6 @@
         background-position: 0% 100%;
       }
     }
-
     .animate-gradient-x {
       background-size: 300% 300%;
       animation: gradient-x 5s ease-in-out infinite;
@@ -51,8 +50,12 @@
 
   <div >
 
-    <div id="mainView">
-      <img src="https://t1.daumcdn.net/brunch/service/user/8tUw/image/k5FnN2MO6Oo6IpAthlDotbzNg3c.jpg"> 
+    <div id="mainView" class="h-screen w-full">
+      <div class="h-full w-full bg-dark">
+        
+      </div>
+
+
     </div>
     
 

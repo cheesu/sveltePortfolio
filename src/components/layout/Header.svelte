@@ -24,15 +24,6 @@
   
     function handleClick() {
       isMobileMenuOpen.update((value) => !value);
-        if(isMobileMenuOpen){
-          // console.log("testsetsetsertset");
-          // const parentElement:any = document.querySelector('#headerNav');
-          // let parentHeight:string = parentElement.offsetHeight+"px";
-          // const topN:any =  document.querySelector('#topNav');
-          // topN.style.top = parentHeight;
-          // console.log(topN);
-        }
-
     }
 
     function mobileMenuClose():void{
