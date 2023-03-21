@@ -300,7 +300,7 @@ const careerArr:careerBox[] = [
     </div>
 
     <div class="my-20">
-      <h2 class="m-10  break-keep text-4xl text-center font-nanumb md:text-5xl"> 경력 사항 </h2>
+      <h2 class="m-10  break-keep text-4xl text-center font-nanumb md:text-5xl">경력 사항[작업중]</h2>
 
       <ul class="grid justify-items-center my-20 grid-cols-2 grid-gap-2 md:grid-cols-1 ">
         {#each careerArr as item}
