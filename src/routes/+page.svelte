@@ -1,10 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
+	
   
 
   const firstMsgArr:string[] = ["I'm","web","deveoper"];
-  const colorBoxArr:careerBox[] = [
+  const colorBoxArr:colorBox[] = [
     {
     value : "8 years",
     title : "total career"
@@ -20,7 +21,7 @@
 
   ];
 
-  interface careerBox {
+  interface colorBox {
     value: string;
     title: string;
   }
@@ -36,6 +37,77 @@
                               "git.svg","github.svg","docker.svg","aws.svg",
                               ];
   
+
+
+//경력 사항
+const careerArr:careerBox[] = [
+    {
+      compony : "회사명1",
+      date : "2022.01~2023.04",
+      projectList : [{
+        date: "2022.01 ~ 2022.07",
+        projectName: "프로젝트 네임1",
+        projectStack: "react,sprign,mssql, 기타 등등등등등",
+        area: "보험 api 개발 및 이것저것 하고 저것도 하고 이것도 하고 암튼 쥰내 많이 함"
+      },{
+        date: "2022.01 ~ 2022.07",
+        projectName: "프로젝트 네임1",
+        projectStack: "react,sprign,mssql, 기타 등등등등등",
+        area: "보험 api 개발 및 이것저것 하고 저것도 하고 이것도 하고 암튼 쥰내 많이 함"
+      },]
+
+    },
+    {
+      compony : "회사명2",
+      date : "2022.01~2023.04",
+      projectList : [{
+        date: "2022.01 ~ 2022.07",
+        projectName: "프로젝트 네임1",
+        projectStack: "react,sprign,mssql, 기타 등등등등등",
+        area: "보험 api 개발 및 이것저것 하고 저것도 하고 이것도 하고 암튼 쥰내 많이 함"
+      },{
+        date: "2022.01 ~ 2022.07",
+        projectName: "프로젝트 네임1",
+        projectStack: "react,sprign,mssql, 기타 등등등등등",
+        area: "보험 api 개발 및 이것저것 하고 저것도 하고 이것도 하고 암튼 쥰내 많이 함"
+      },]
+    },
+    {
+      compony : "회사명3",
+      date : "2022.01~2023.04",
+      projectList : [{
+        date: "2022.01 ~ 2022.07",
+        projectName: "프로젝트 네임1",
+        projectStack: "react,sprign,mssql, 기타 등등등등등",
+        area: "보험 api 개발 및 이것저것 하고 저것도 하고 이것도 하고 암튼 쥰내 많이 함"
+      },{
+        date: "2022.01 ~ 2022.07",
+        projectName: "프로젝트 네임1",
+        projectStack: "react,sprign,mssql, 기타 등등등등등",
+        area: "보험 api 개발 및 이것저것 하고 저것도 하고 이것도 하고 암튼 쥰내 많이 함"
+      },{
+        date: "2022.01 ~ 2022.07",
+        projectName: "프로젝트 네임1",
+        projectStack: "react,sprign,mssql, 기타 등등등등등",
+        area: "보험 api 개발 및 이것저것 하고 저것도 하고 이것도 하고 암튼 쥰내 많이 함"
+      },]
+    }
+
+  ];
+
+  interface careerBox {
+    compony: string;
+    date: string;
+    projectList: project[];
+  }
+
+  interface project {
+    date: string;
+    projectName: string;
+    projectStack: string;
+    area: string;
+  }
+
 
   onMount(() => {
     const firstUlEl: HTMLElement | null = document.getElementById('firstUl');
@@ -142,6 +214,11 @@
     
     
 
+    
+
+
+
+
   });
 
   
@@ -220,6 +297,37 @@
           {/each}
         </ul>
       </div>
+    </div>
+
+    <div class="my-20">
+      <h2 class="m-10  break-keep text-4xl text-center font-nanumb md:text-5xl"> 경력 사항 </h2>
+
+      <ul class="grid justify-items-center my-20 grid-cols-2 grid-gap-2 md:grid-cols-1 ">
+        {#each careerArr as item}
+          <li class="my-10">
+            <div>
+                {item.date}
+                <br>
+                {item.compony}
+                <br>
+                <ul>
+                  {#each item.projectList as prj}
+                    <li>
+                      {prj.projectName}
+                      {prj.date}
+                      <br>
+                      {prj.projectStack}
+                      <br>
+                      {prj.area}
+                    </li>
+                  {/each}
+                </ul>
+            </div>
+
+          </li>
+        {/each}
+      </ul>
+
     </div>
 
 
