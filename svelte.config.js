@@ -12,6 +12,7 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			$components: './src/components',
+			$icon: 'static/icon',
 		}
 
 	}

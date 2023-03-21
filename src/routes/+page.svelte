@@ -26,7 +26,7 @@
     title: string;
   }
   
-  const path = "src/icon/"
+  const path = "icon/"
 
   const feIconArr:string[] = ["svelte.svg","react.svg","typescript.svg","html5.png" ,"javascript.png","css3.png",
                               "jquery.png", 
