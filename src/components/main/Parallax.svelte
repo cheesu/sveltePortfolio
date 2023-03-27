@@ -9,7 +9,7 @@ onMount(() => {
     //메인뷰 높이 감지
     let mainViewH:number = 0;
     if (mainEl) {
-        mainViewH = mainEl.offsetHeight;
+        mainViewH = mainEl.offsetHeight / 2;
         console.log("메인 높이"+mainViewH);
     }
 
@@ -185,22 +185,22 @@ section{
 </style>
 <div id="parallaxWrapper" class="overflow-hidden">
     <div class="parallax_ex">
-        <h1 class="parallax_txt1 ">Parallax Example1</h1>
+        <h1 class="parallax_txt1 ">아직 끝나지 않았다</h1>
     </div>
     
     <div class="wrap">
         <main class="main">
             <section class="sec1">
-                <h2 class="parallax_txt2">Parallax Scroll Example2</h2>
+                <h2 class="parallax_txt2">열심히</h2>
             </section>
             <section class="sec2">
-                <h2 class="parallax_txt3">Parallax Scroll Example3</h2>
+                <h2 class="parallax_txt3">최선을 다 해서</h2>
             </section>
             <section class="sec3">
-                <h2 class="parallax_txt4">Parallax Scroll Example4</h2>
+                <h2 class="parallax_txt4">사이트를 제작중에 있습니다.</h2>
             </section>
             <section class="sec4">
-                <h2 class="parallax_txt5">Parallax Scroll Example5</h2>
+                <h2 class="parallax_txt5">조만간 완성이 됩니다.</h2>
             </section>
         </main>
     </div>
