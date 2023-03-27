@@ -1,8 +1,10 @@
 <script lang="ts">
+  
 
 interface careerBox {
     compony: string;
     date: string;
+    summary: string;
     projectList: project[];
   }
 
@@ -18,6 +20,7 @@ const careerArr:careerBox[] = [
     {
       compony : "산타데이",
       date : "2022.01~2023.04",
+      summary : "외부 협력사 API 연동을 통한 컨텐츠 구현 및 블록체인 네트워크 DID, SSI 연구 분석",
       projectList : [{
         date: "2022.02 ~ 2022.03",
         projectName: "블록체인 네트워크를 사용한 DID SSI 연구분석",
@@ -44,6 +47,7 @@ const careerArr:careerBox[] = [
     {
       compony : "삼원씨앤지",
       date : "2018.01~2021.06",
+      summary : "모니터링 시스템 및 EMS, FMS 데이터 시각화 ",
       projectList : [{
         date: "2022.01 ~ 2021.04",
         projectName: "FMS(시설물 관리 시스템)",
@@ -69,6 +73,7 @@ const careerArr:careerBox[] = [
     {
       compony : "POIS",
       date : "2017.03~2017.10",
+      summary : "안드로이드 카메라 여권인식, POS 기기 무선통신, 전문통신 API 어플리케이션",
       projectList : [{
         date: "2017.09 ~ 2017.10",
         projectName: "MTRS",
@@ -103,6 +108,7 @@ const careerArr:careerBox[] = [
     {
       compony : "주인정보 시스템",
       date : "2014.12~2017.2",
+      summary : "실시간 모니터링시스템 및 에너지 소비 데이터 시각화 , 사용자 UI/UX",
       projectList : [{
         date: "2016.11 ~ 2017.02",
         projectName: "현대 파워텍 EMS",
@@ -146,8 +152,27 @@ const careerArr:careerBox[] = [
 
   ];
 
+
+    //경력 상세 토글
+    function clickMore(e:any):void{
+      const button = e.target as HTMLButtonElement;
+      const content = button.parentElement?.nextElementSibling as HTMLElement | null;
+      if (content) {
+        if (content.classList.contains('h-0')) {
+          content.style.height = content.scrollHeight + 'px';
+          content.style.transitionDuration = "0.5s";
+          content.classList.remove('h-0');
+        } else {
+          content.style.height = '0';
+          content.style.transitionDuration = "0.5s";
+          content.classList.add('h-0');
+        }
+      }
+    }
+ 
   
 </script>
+
 
 <div class="my-20">
     <h2 class="m-10 break-keep text-4xl text-center font-nanumb md:text-5xl">경력 사항(작업중)</h2>
@@ -157,28 +182,33 @@ const careerArr:careerBox[] = [
                 {#each careerArr as item , index}
                   <li class="w-full md:w-1/2 p-10  text-left  {index%2 == 0? 'md:float-right' : 'md:float-left'}">
                     <div>
-                        {item.date}
-                        <br>
-                        {item.compony}
-                        <br>
-                        <ul class="">
-                          {#each item.projectList as prj}
-                            <li class="mt-10">
-                                <p>
-                                   <span>프로젝트명 : </span> {prj.projectName}
-                                </p>
-                                <p>
-                                    <span>기    간 : </span>{prj.date}
-                                </p>
-                                <p>
-                                    <span>기술 스택 :</span> {prj.projectStack}
-                                </p>
-                                <p>
-                                   <span>역할 :</span> {prj.area}
-                                </p>
-                            </li>
-                          {/each}
-                        </ul>
+                        <div class="font-nanumb {index%2 == 0? 'md:float-left' : 'md:float-right md:text-right'}">
+                          <h4>{item.compony}</h4>
+                          <p class="font-nanum">{item.date}</p>
+                          <p>{item.summary}</p>
+                          <button class="shadow bg-blue-200 hover:bg-blue-500 transition duration-500 ease-in-out text-white font-bold py-1 px-2 rounded" on:click={clickMore}>More Info</button>
+                        </div>
+                        <div class="detail-box w-full overflow-hidden h-0 transition-height">
+                          <ul class="{index%2 == 0? 'md:text-left' : 'md:text-right'}">
+                            {#each item.projectList as prj}
+                              <li class="mt-10">
+                                  <p>
+                                     {prj.projectName}
+                                  </p>
+                                  <p>
+                                      {prj.date}
+                                  </p>
+                                  <p>
+                                       {prj.projectStack}
+                                  </p>
+                                  <p>
+                                     {prj.area}
+                                  </p>
+                              </li>
+                            {/each}
+                          </ul>
+                        </div>
+
                     </div>
                   </li>
                   <li class="w-full float-right"></li>
