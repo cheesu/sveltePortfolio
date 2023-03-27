@@ -191,7 +191,7 @@ section{
     <div class="wrap">
         <main class="main">
             <section class="sec1">
-                <h2 class="parallax_txt2">열심히</h2>
+                <h2 class="parallax_txt2">열심히!</h2>
             </section>
             <section class="sec2">
                 <h2 class="parallax_txt3">최선을 다 해서</h2>
