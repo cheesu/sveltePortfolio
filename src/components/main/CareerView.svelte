@@ -47,7 +47,7 @@ const careerArr:careerBox[] = [
     {
       compony : "삼원씨앤지",
       date : "2018.01~2021.06",
-      summary : "모니터링 시스템 및 EMS, FMS 데이터 시각화 ",
+      summary : "모니터링 시스템 및 EMS, FMS 데이터 시각화 GS인증 업무",
       projectList : [{
         date: "2022.01 ~ 2021.04",
         projectName: "FMS(시설물 관리 시스템)",
@@ -108,7 +108,7 @@ const careerArr:careerBox[] = [
     {
       compony : "주인정보 시스템",
       date : "2014.12~2017.2",
-      summary : "실시간 모니터링시스템 및 에너지 소비 데이터 시각화 , 사용자 UI/UX",
+      summary : "실시간 모니터링시스템 및 에너지 소비 데이터 시각화 , 사용자 UI/UX, GS인증 업무",
       projectList : [{
         date: "2016.11 ~ 2017.02",
         projectName: "현대 파워텍 EMS",
@@ -175,7 +175,7 @@ const careerArr:careerBox[] = [
 
 
 <div class="my-20">
-    <h2 class="m-10 break-keep text-4xl text-center font-nanumb md:text-5xl">경력 사항(작업중)</h2>
+    <h2 class="m-10 break-keep text-4xl text-center font-nanumb md:text-5xl">Compony Career</h2>
     <div class="flex items-center justify-center">
         <div class="md:w-2/3 text-center">
             <ul class=" ">
@@ -188,7 +188,7 @@ const careerArr:careerBox[] = [
                           <p>{item.summary}</p>
                           <button class="shadow bg-blue-200 hover:bg-blue-500 transition duration-500 ease-in-out text-white font-bold py-1 px-2 rounded" on:click={clickMore}>More Info</button>
                         </div>
-                        <div class="detail-box w-full overflow-hidden h-0 transition-height">
+                        <div class="detail-box w-full  overflow-hidden h-0 transition-height ">
                           <ul class="{index%2 == 0? 'md:text-left' : 'md:text-right'}">
                             {#each item.projectList as prj}
                               <li class="mt-10">
