@@ -131,7 +131,7 @@
     .first-animate {
     animation-name: blankani; 
     animation-duration: 0.12s;
-    animation-iteration-count: 12;
+    animation-iteration-count: 0;
     animation-delay: 0s;
     }
     @keyframes blankani {
