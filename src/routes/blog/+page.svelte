@@ -27,8 +27,10 @@
   });
 
   </script>
-  <div>
-    <h1 class="text-20 p-10">최근 포스팅한 게시물</h1>
 
+
+  <div class="h-screen">
+    <h1 class="text-20 p-10">최근 포스팅한 게시물</h1>
+    <CardList cards={cards} />
   </div>
-  <CardList cards={cards} />
+  
