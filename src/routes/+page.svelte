@@ -5,6 +5,7 @@
   import LangView from '$components/main/LangView.svelte';
   import PersonalPrj from '$components/main/PersonalPrj.svelte';
   import CareerView from '$components/main/CareerView.svelte';
+  import Parallax from '$components/main/Parallax.svelte';
 	
 
 </script>
@@ -13,6 +14,8 @@
 
   <div>
     <MainView></MainView>
+    <Parallax></Parallax>
+
     <ColorBox></ColorBox>
     <LangView></LangView>
     <PersonalPrj></PersonalPrj>

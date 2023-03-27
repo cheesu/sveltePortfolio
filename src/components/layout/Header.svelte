@@ -67,7 +67,6 @@
 
       // 흰배경 검은글씨
       function headerWhite():void {
-        console.log("// 흰배경 검은글씨");
         if(headerEl && bugerEl){
             headerEl.style.transition = "background-color 0.5s ease, color 0.5s ease";
             headerEl.style.backgroundColor = "#FFFFFF";
@@ -80,7 +79,6 @@
 
       // 투명배경 흰글씨
       function headerTrans():void {
-        console.log("// 투명배경 흰글씨");
         if(headerEl && bugerEl){
             headerEl.style.transition = "background-color 0.5s ease, color 0.5s ease";
             headerEl.style.backgroundColor = "transparent";
@@ -99,7 +97,6 @@
       let mainViewH:number = 0;
       if (mainEl) {
         mainViewH = mainEl.offsetHeight;
-        console.log(mainViewH);
       }
 
       // 윈도우 스크롤 감지
