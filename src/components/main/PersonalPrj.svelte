@@ -198,7 +198,7 @@
                         textBox1.style.opacity = "0";
                     }
 
-                    if(top  > sec1Top+500){
+                    if(top  > sec1Top+800){
                         img2.style.position =  "fixed";
                         img2.style.top = titleH+sec1Title?.offsetHeight+"px";
                         img2.style.right = "25%";
@@ -212,7 +212,7 @@
                         textBox2.style.opacity = "1";
 
                     }
-                    if(top  < sec1Top+500 || top > sec1Top + sec1El.offsetHeight){
+                    if(top  < sec1Top+800 || top > sec1Top + sec1El.offsetHeight){
                         img2.style.right = "-100%";
                         textBox2.style.bottom = "-100%";
                         textBox2.style.opacity = "0";
