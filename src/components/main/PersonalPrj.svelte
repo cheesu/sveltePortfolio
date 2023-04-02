@@ -84,7 +84,14 @@
         const sec3Title: HTMLElement | null = document.getElementById('sec3Title');
         const sec4Title: HTMLElement | null = document.getElementById('sec4Title');
 
+        
+        
         const img1: HTMLElement | null = document.getElementById('img1');
+        const img2: HTMLElement | null = document.getElementById('img2');
+
+        
+        const textBox1: HTMLElement | null = document.getElementById('textBox1');
+        const textBox2: HTMLElement | null = document.getElementById('textBox2');
 
         
         
@@ -101,10 +108,11 @@
             return;
         }
 
+
         //이미지 앨리먼트 체크
-        if(img1===null){
-            return;
-        }
+        // if(img1===null){
+        //     return;
+        // }
         
         const wrapperTop:number = pernonalPrjWrapper.offsetTop;
         const wrapperBottom:number = pernonalPrjWrapper.offsetHeight+wrapperTop;
@@ -175,12 +183,42 @@
                     if(top  > sec1Top){
                          img1.style.position =  "fixed";
                          img1.style.top = titleH+sec1Title?.offsetHeight+"px";
-                         img1.style.right = "20%";
+                         img1.style.right = "25%";
+
+                         textBox1.style.position =  "fixed";
+                         textBox1.style.bottom = "10%";
+                         textBox1.style.right = "25%";
+                         textBox1.style.opacity = "1";
+                         
 
                     }
                     if(top  < sec1Top || top > sec1Top + sec1El.offsetHeight){
-                        img1.style.right = "100%";
+                        img1.style.right = "-100%";
+                        textBox1.style.bottom = "-100%";
+                        textBox1.style.opacity = "0";
                     }
+
+                    if(top  > sec1Top+500){
+                        img2.style.position =  "fixed";
+                        img2.style.top = titleH+sec1Title?.offsetHeight+"px";
+                        img2.style.right = "25%";
+
+                        textBox1.style.bottom = "-100%";
+                        textBox1.style.opacity = "0";
+
+                        textBox2.style.position =  "fixed";
+                        textBox2.style.bottom = "10%";
+                        textBox2.style.right = "25%";
+                        textBox2.style.opacity = "1";
+
+                    }
+                    if(top  < sec1Top+500 || top > sec1Top + sec1El.offsetHeight){
+                        img2.style.right = "-100%";
+                        textBox2.style.bottom = "-100%";
+                        textBox2.style.opacity = "0";
+                    }
+
+                    
 
 
                 ticking = false;
@@ -217,9 +255,12 @@
   will-change: transform, top, left;
 }
 
-.init-left{
+.init-item{
     position: absolute;
-  display: inline-block;
+    display: inline-block;
+}
+
+.init-left{
   font-size: 40px;
   transition: 0.5s ease;
   left: -50%;
@@ -228,14 +269,25 @@
 }
 
 .init-right{
-    position: absolute;
-    display: inline-block;
+    font-size: 40px;
+    transition: 0.2s ease;
+    right: -100%;
+    will-change: transform, top, right;
+}
+.init-top{
+    font-size: 40px;
+    transition: 0.2s ease;
+    top: -100%;
+    will-change: transform, top;
+}
+.init-bottom{
     font-size: 40px;
     transition: 0.5s ease;
-    right: 50%;
-    will-change: transform, top, right;
-    
+    bottom: -100%;
+    opacity: 0;
+    will-change: transform,  bottom;
 }
+
 
 
 section{
@@ -245,6 +297,11 @@ section{
     z-index: 99;
     font-size: 0;
 }
+
+.sec-1{
+    height: 2200px;
+}
+
 /* 
 
 .parallax_txt1{
@@ -281,15 +338,28 @@ section{
     <!-- 내용 -->
     <div id="personalWrapper" class="relative">
         <!-- In Studio-->
-        <section id="sec1 ">
+        <section id="sec1" class="sec-1">
             <div id="sec1Title" class="prj-title"> 
                 <a id="headerLogo" href="/" class="text-2xl font-nanumb font-bold w-120 mx-5 md:mx-10">In <span class="text-red-500">S</span>tudio</a>
             </div>
-            <div id="img1" class="init-right">
-                <img src="img/instudio1.PNG" alt="In Studio Screen shoot"/>
+
+            <div id="img1" class="init-item init-right w-1/2">
+                <img src="img/instudio1.PNG" alt="In Studio Screen shoot1"/>
+            </div>
+            <div id="img2" class="init-item init-right w-1/2">
+                <img src="img/instudio2.PNG" alt="In Studio Screen shoot2"/>
+            </div>
+          
+            <div id="textBox1" class="init-item init-bottom">
+                <p> 자기 소개 및 포트폴리오 소개 사이트 </p>
+                <p> 현재 개발중인 사이트 입니다. </p>
             </div>
 
-            <h2 class="parallax_txt2">열심히!</h2>
+            <div id="textBox2" class="init-item init-bottom">
+                <p> Svelte, typescript, Tailwind Css </p>
+            </div>
+
+            
         </section>
 
         <!-- 해적 -->
