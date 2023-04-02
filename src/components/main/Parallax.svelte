@@ -37,6 +37,9 @@ onMount(() => {
     document.addEventListener('scroll', (e) =>{
                 timer = null;
                 let top = document.documentElement.scrollTop;
+                let scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
+                let clientHeight = document.documentElement.clientHeight || window.innerHeight;
+                
                 //console.log(top)
                 if(window.scrollY < mainViewH){
                     p_ex1.style.fontSize = '50px';
@@ -59,20 +62,22 @@ onMount(() => {
                     p_ex1.style.top = '50%';
                     p_ex1.style.left = '50%';
                 }
-                if(window.scrollY < mainViewH+500){
+
+                
+                if(window.scrollY < mainViewH+600){
                     p_ex2.style.left = '-100%';
                 }
-                if(window.scrollY > mainViewH+500){
+                if(window.scrollY > mainViewH+600){
                     p_ex2.style.left = '10%';
                 }
-                if(window.scrollY > mainViewH+1000){
-                    p_ex1.style.transition = '0.22s ease';
+                if(window.scrollY > mainViewH+500){
+                    p_ex1.style.transition = '0.2s ease';
                     p_ex1.style.fontSize = '80px';
                     p_ex1.style.transform = 'translate(-50%, -50%) rotate(90deg)';
                     p_ex1.style.top = '60%';
                     p_ex1.style.left = '50%';
                 }
-                if(window.scrollY < mainViewH+1200){
+                if(window.scrollY < mainViewH+1400){
                     p_ex3.style.right = '-70%';
                 }
                 if(window.scrollY > mainViewH+1200){
@@ -96,17 +101,20 @@ onMount(() => {
                     p_ex5.style.top = '50%';
                     
                 }
-            if(window.scrollY < mainViewH+2600){
+                if(window.scrollY < mainViewH+2600){
                     p_ex5.style.opacity = '0';
                     p_ex5.style.top = '100%';
                 }
 
-                if(window.scrollY > mainViewH+wrapperH){
-                    p_ex1_wrapper.style.position = 'relative';
+                if(window.scrollY +clientHeight > mainViewH+wrapperH){
+                   // p_ex1_wrapper.style.position = 'relative';
+                   // p_ex1_wrapper.style.opacity = '0';
                 }
-                if(window.scrollY < mainViewH+wrapperH){
-                    p_ex1_wrapper.style.position = 'fixed';
+                if(window.scrollY +scrollHeight < mainViewH+wrapperH){
+                   // p_ex1_wrapper.style.position = 'relative';
+                   // p_ex1_wrapper.style.opacity = '1';
                 }
+                
 
     });
         

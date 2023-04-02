@@ -13,6 +13,7 @@ const config = {
 		alias: {
 			$components: './src/components',
 			$icon: 'static/icon',
+			$img: 'static/img',
 		}
 
 	}

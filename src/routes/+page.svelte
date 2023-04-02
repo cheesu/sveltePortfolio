@@ -14,7 +14,6 @@
 
   <div>
     <MainView></MainView>
-    <Parallax></Parallax>
 
     <ColorBox></ColorBox>
     <LangView></LangView>
