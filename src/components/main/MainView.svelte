@@ -52,7 +52,8 @@
       const letters:string[] = [
         "The \n CREATIVE!",
         "DEVEOPER \n IN CHEESU",
-        "이 페이지는 \n CSS와 JAVASCRIPT 만으로 \n 제작되었습니다."
+        "이 사이트는 \n 개발중입니다 \n 조금만. \n 기다려 주세요."
+
       ];
 
       // 글자 입력 속도

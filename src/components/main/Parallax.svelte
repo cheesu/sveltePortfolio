@@ -2,6 +2,7 @@
 
 import { onMount } from "svelte";
 
+
 onMount(() => {
     const mainEl: HTMLElement | null = document.getElementById('mainView');
     const wrapperEl: HTMLElement | null = document.getElementById('parallaxWrapper');

@@ -1,6 +1,11 @@
 <script lang="ts">
   
-  import { onMount } from "svelte";
+    import { onMount } from "svelte";
+
+    const clickPirates = ()=>{
+        window.open("https://play.google.com/store/apps/details?id=com.instudio.thepirates_corrupt");
+    }
+
 
     interface careerBox {
         prjName?: string;
@@ -93,27 +98,18 @@
         const textBox1: HTMLElement | null = document.getElementById('textBox1');
         const textBox2: HTMLElement | null = document.getElementById('textBox2');
 
-        
-        
-        
+        const piratesImg1: HTMLElement | null = document.getElementById('piratesImg1');
+        const piratesImg2: HTMLElement | null = document.getElementById('piratesImg2');
+        const piratesImg3: HTMLElement | null = document.getElementById('piratesImg3');
+        const piratesImg4: HTMLElement | null = document.getElementById('piratesImg4');
+
+
         //엘리먼트 체크
         if(title === null || pernonalPrjWrapper === null || sec1El === null 
             || sec2El === null || sec3El === null|| sec4El === null){
             return;
         }
 
-        //타이틀 엘리먼트 체크
-        if(sec1Title === null || sec2Title === null || sec3Title === null 
-            || sec4Title === null ){
-            return;
-        }
-
-
-        //이미지 앨리먼트 체크
-        // if(img1===null){
-        //     return;
-        // }
-        
         const wrapperTop:number = pernonalPrjWrapper.offsetTop;
         const wrapperBottom:number = pernonalPrjWrapper.offsetHeight+wrapperTop;
 
@@ -135,6 +131,30 @@
         // scroll 이벤트 핸들러
         function scrollHandler(e: Event) {
             if (!ticking) {
+                //엘리먼트 체크
+                if(title === null || pernonalPrjWrapper === null || sec1El === null 
+                    || sec2El === null || sec3El === null|| sec4El === null){
+                    return;
+                }
+
+                //타이틀 엘리먼트 체크
+                if(sec1Title === null || sec2Title === null || sec3Title === null 
+                    || sec4Title === null ){
+                    return;
+                }
+
+                // 인 스튜디오 컨텐츠 엘리먼트 체크 
+                if(img1 === null || img2 === null || textBox1 === null 
+                    || textBox2 === null ){
+                    return;
+                }
+
+                // the pirates 엘리먼트 체크 
+                if(piratesImg1 === null || piratesImg2 === null || piratesImg3 === null 
+                    || piratesImg4 === null ){
+                    return;
+                }
+
                 window.requestAnimationFrame(() => {
                     
                     let top:number = document.documentElement.scrollTop;
@@ -189,8 +209,6 @@
                          textBox1.style.bottom = "10%";
                          textBox1.style.right = "25%";
                          textBox1.style.opacity = "1";
-                         
-
                     }
                     if(top  < sec1Top || top > sec1Top + sec1El.offsetHeight){
                         img1.style.right = "-100%";
@@ -218,6 +236,29 @@
                         textBox2.style.opacity = "0";
                     }
 
+
+                    //the Pirates
+                    if(top  > sec2Top){
+                        piratesImg1.style.top = titleH+sec1Title?.offsetHeight+"px";
+                    }
+
+                    if(top  > sec2Top+500){
+                        piratesImg2.style.top = titleH+sec1Title?.offsetHeight+"px";
+                    }
+                    if(top  > sec2Top+1000){
+                        piratesImg3.style.top = titleH+sec1Title?.offsetHeight+"px";
+                    }
+                    if(top  > sec2Top+1500){
+                        piratesImg4.style.top = titleH+sec1Title?.offsetHeight+"px";
+                    }
+
+                    
+                    if(top  < sec2Top || top > sec2Top + sec2El.offsetHeight){
+                        piratesImg1.style.top = "-200%";
+                        piratesImg2.style.top = "-200%";
+                        piratesImg3.style.top = "-200%";
+                        piratesImg4.style.top = "-200%";
+                    }
                     
 
 
@@ -289,6 +330,17 @@
 }
 
 
+.init-pirates-img{
+    position: fixed;
+    display: inline-block;
+    width: 20%;
+    left:40%;
+    bottom: 100%;
+    transition: 0.5s ease;
+    will-change: transform,  right , bottom, top;
+}
+
+
 
 section{
     position: relative;
@@ -300,6 +352,10 @@ section{
 
 .sec-1{
     height: 2200px;
+}
+
+.sec-2{
+    height: 3200px;
 }
 
 /* 
@@ -363,15 +419,35 @@ section{
         </section>
 
         <!-- 해적 -->
-        <section id="sec2">
-            <div id="sec2Title" class="prj-title"> 
+        <section id="sec2" class="sec-2">
+            <div id="sec2Title" class="prj-title cursor-pointer" on:click={clickPirates} on:keypress={clickPirates}> 
+                <img src="img/pirates_icon.png" class=" w-1/4" alt="the Pirates icon"/>
                 <h2 >The Pirates </h2>
             </div>
-            <h2 class="parallax_txt2">열심히!</h2>
+            
+            <div id="piratesImg1" class="init-pirates-img w-1/2">
+                <img src="img/thePirates1.webp" alt="In Studio Screen shoot1"/>
+            </div>
+            <div id="piratesImg2" class="init-pirates-img w-1/2">
+                <img src="img/thePirates2.webp" alt="In Studio Screen shoot2"/>
+            </div>
+            <div id="piratesImg3" class="init-pirates-img w-1/2">
+                <img src="img/thePirates3.webp" alt="In Studio Screen shoot3"/>
+            </div>
+            <div id="piratesImg4" class="init-pirates-img w-1/2">
+                <img src="img/thePirates4.webp" alt="In Studio Screen shoot4"/>
+            </div>
+
+
+            <div class="w-full" >    
+
+            </div>
+
+
         </section>
 
         <!-- Spap -->
-        <section id="sec3">
+        <section id="sec3" class="sec-3">
             <div id="sec3Title" class="prj-title"> 
                 <h2>Spap</h2>
             </div>
@@ -379,7 +455,7 @@ section{
         </section>
 
         <!-- 안드로이드 게임 -->
-        <section id="sec4">
+        <section id="sec4" class="sec-4">
             <div id="sec4Title" class="prj-title"> 
                 <h2>android </h2>
             </div>
