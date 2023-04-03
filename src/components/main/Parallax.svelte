@@ -95,6 +95,11 @@
         const inText2: HTMLElement | null = document.getElementById('inText2');
         const inText3: HTMLElement | null = document.getElementById('inText3');
         
+        //섹션3 해적 컨텐츠 아이템
+        const phoneContainer: HTMLElement | null = document.getElementById('phoneContainer');
+        const piratesScreenWrapper: HTMLElement | null = document.getElementById('piratesScreenWrapper');
+        
+        
         
         
         const img1: HTMLElement | null = document.getElementById('img1');
@@ -201,7 +206,7 @@
                         monitorContainer.style.top = "20%";
 
                         if(secProgress > 1500){
-                            let transY:number = (secProgress-1500)/20*-1;
+                            let transY:number = (secProgress-1500)/50*-1;
                             let transformY : string = "translateY("+transY+"%)";
                             inScreenWrapper.style.transform = transformY;
                         }else{
@@ -256,16 +261,34 @@
                         inText3.style.bottom = "-50%";
                     }
 
-                    // 섹션1 타이틀
+                    // 섹션3 해적
                     if(top > sec3Top && top < sec3Top+sec3El.offsetHeight){
-                        let secProgress:number = top - sec2Top;
+                        let secProgress:number = top - sec3Top;
                         let opacity:number = secProgress/1000;
-                        piratesTitle.style.opacity = 1;
                         piratesTitle.style.top = "10%";
+                        phoneContainer.style.top = "20%";
+
+                        if(secProgress > 1500){
+                            let transY:number = (secProgress-1500)/50*-1;
+                            let transformY : string = "translateY("+transY+"%)";
+                            piratesScreenWrapper.style.transform = transformY;
+                        }else{
+                            piratesScreenWrapper.style.transform ="translateY(0%)";
+                        }
+
+                        if(bottom > sec3Top+sec3El.offsetHeight){
+                            opacity = 1 - (bottom -sec3Top+sec3El.offsetHeight-1000)/1000;
+                        }
+                        
+                        
+                        piratesTitle.style.opacity = opacity;
+                        phoneContainer.style.opacity  = opacity;
 
                     }else{
                         piratesTitle.style.opacity = 0;
+                        phoneContainer.style.opacity  = 0;
                         piratesTitle.style.top = "-50%";
+                        phoneContainer.style.top = "-100%";
                     }
 
                     
@@ -313,7 +336,7 @@
         height : 5000px;
     }
     .sec3-wrapper{
-        height : 2000px;
+        height : 8000px;
     }
     .sec4-wrapper{
         height : 2000px;
@@ -334,6 +357,19 @@
         transition: 0.4s ease;
         bottom : -50%;
         will-change: transform, bottom;
+    }
+
+    .sea-bg{
+        /* background-image: url("img/sea.jpg"); */
+    }
+
+    .pirates-screen-container{
+        width: 100%;
+        height: 89%;
+        top : 5%;
+    }
+    .pirates-screen-wrapper{
+        width: 45%;
     }
 
 </style>
@@ -360,32 +396,50 @@
             <div class="in-screen-container absolute flex justify-center items-center overflow-hidden">
                 <div id="inScreenWrapper" class="in-screen-wrapper absolute top-0">
                     <img src="img/instudio1.PNG" class="relative" alt="In Studio Screen shoot1"/>
-                    <img src="img/instudio2.PNG" class="relative" alt="In Studio Screen shoot1"/>
-                    <img src="img/instudio1.PNG" class="relative" alt="In Studio Screen shoot1"/>
-                    <img src="img/instudio2.PNG" class="relative" alt="In Studio Screen shoot1"/>
+                    <img src="img/instudio2.PNG" class="relative" alt="In Studio Screen shoot2"/>
+                    <img src="img/instudio3.PNG" class="relative" alt="In Studio Screen shoot3"/>
+                    <img src="img/instudio4.PNG" class="relative" alt="In Studio Screen shoot4"/>
                 </div>
             </div>
         </div>
             <!-- 소개글 -->
-            <div id="inText1" class="in-text fixed w-full flex justify-center items-center opacity-0">
-                <p class="w-full md:w-1/2">현재 개발중인 자기 소개 및 포트폴리오 소개 사이트 입니다.</p>
-            </div>
-            <div id="inText2" class="in-text fixed w-full flex justify-center items-center opacity-0">
-                <p class="w-full md:w-1/2">SvelteKit, TypeScript, Tailwind CSS를 사용 하였습니다.</p>
-            </div>
-            <div id="inText3" class="in-text fixed w-full flex justify-center items-center opacity-0">
-                <p class="w-full md:w-1/2">Github actions, docker, EC2, ECR을 활용해 CI/CD를 구성 하였습니다.</p>
+            <div class="text-2xl font-nanumb font-bold w-full mx-5 md:mx-10">
+                <div id="inText1" class="in-text fixed w-full flex justify-center items-center opacity-0">
+                    <p class="w-full md:w-1/2">현재 개발중인 자기 소개 및 포트폴리오 소개 사이트 입니다.</p>
+                </div>
+                <div id="inText2" class="in-text fixed w-full flex justify-center items-center opacity-0">
+                    <p class="w-full md:w-1/2">SvelteKit, TypeScript, Tailwind CSS를 사용 하였습니다.</p>
+                </div>
+                <div id="inText3" class="in-text fixed w-full flex justify-center items-center opacity-0">
+                    <p class="w-full md:w-1/2">Github actions, docker, EC2, ECR을 활용해 CI/CD를 구성 하였습니다.</p>
+                </div>
             </div>
 
             
     </section>
 
-    <section id="sec3" class="sec3-wrapper flex justify-center items-center bg-red-500">
+    <section id="sec3" class="sec3-wrapper flex justify-center items-center">
+        <div class="sea-bg w-full h-screen fixed">
+
+        </div>
         <!--프로젝트 제목-->
         <div id="piratesTitle" class="pirates-title fixed opacity-0">
-            <h3 class="text-2xl font-nanumb font-bold w-120 mx-5 md:mx-10">The Pirates</h3>
-            <img src="img/pirates_icon.png" class=" w-1/4" alt="the Pirates icon"/>
+            <h3 class="text-2xl font-nanumb font-bold mx-5 md:mx-10">The Pirates</h3>
+            <!-- <img src="img/pirates_icon.png" class=" w-1/4" alt="the Pirates icon"/> -->
         </div>
+        <!-- 모바일 컨테이너 -->
+        <div id = "phoneContainer" class="monitor-container w-1/3  opacity-0  fixed ">
+            <img src="img/phoneFrame.png" class="monitor-img relative" alt="In Studio Screen shoot4"/>
+            <div class="pirates-screen-container absolute flex justify-center items-center overflow-hidden">
+                <div id="piratesScreenWrapper" class="pirates-screen-wrapper absolute top-0">
+                    <img src="img/thePirates1.webp" class="relative" alt="In Studio Screen shoot1"/>
+                    <img src="img/thePirates2.webp" class="relative" alt="In Studio Screen shoot1"/>
+                    <img src="img/thePirates3.webp" class="relative" alt="In Studio Screen shoot1"/>
+                    <img src="img/thePirates4.webp" class="relative" alt="In Studio Screen shoot1"/>
+                </div>
+            </div>
+        </div>
+        
 
     </section>
 
