@@ -374,8 +374,6 @@
 
 </style>
 
-
-  
 <!-- 컨테이너 -->
 <div id="personalPrjContainer" class="my-20 relative bg-black text-white">
     <section id="sec1" class="sec1-wrapper flex justify-center items-center">
