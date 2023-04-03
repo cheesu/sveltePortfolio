@@ -4,7 +4,7 @@
   import ColorBox from '$components/main/ColorBox.svelte';
   import LangView from '$components/main/LangView.svelte';
   import PersonalPrj from '$components/main/PersonalPrj.svelte';
-  import Parallax from '$components/main/parallax.svelte';
+  import Parallax from '$components/main/Parallax.svelte';
   import CareerView from '$components/main/CareerView.svelte';
 </script>
 
