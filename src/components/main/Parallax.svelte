@@ -49,7 +49,7 @@
 
     onMount(() => {
         window.scroll({top : 0, behavior: 'smooth'});
-
+        const screenW:number = screen.availWidth;
         //throttling을 적용
         const throttledScrollHandler = throttle(scrollHandler, 10);
        
@@ -98,21 +98,11 @@
         //섹션3 해적 컨텐츠 아이템
         const phoneContainer: HTMLElement | null = document.getElementById('phoneContainer');
         const piratesScreenWrapper: HTMLElement | null = document.getElementById('piratesScreenWrapper');
+        const piratesTxt1: HTMLElement | null = document.getElementById('piratesTxt1');
+        const piratesTxt2: HTMLElement | null = document.getElementById('piratesTxt2');
+        const piratesTxt3: HTMLElement | null = document.getElementById('piratesTxt3');
         
         
-        
-        
-        const img1: HTMLElement | null = document.getElementById('img1');
-        const img2: HTMLElement | null = document.getElementById('img2');
-
-        
-        const textBox1: HTMLElement | null = document.getElementById('textBox1');
-        const textBox2: HTMLElement | null = document.getElementById('textBox2');
-
-        const piratesImg1: HTMLElement | null = document.getElementById('piratesImg1');
-        const piratesImg2: HTMLElement | null = document.getElementById('piratesImg2');
-        const piratesImg3: HTMLElement | null = document.getElementById('piratesImg3');
-        const piratesImg4: HTMLElement | null = document.getElementById('piratesImg4');
 
 
         //엘리먼트 체크
@@ -263,6 +253,8 @@
 
                     // 섹션3 해적
                     if(top > sec3Top && top < sec3Top+sec3El.offsetHeight){
+
+                        
                         let secProgress:number = top - sec3Top;
                         let opacity:number = secProgress/1000;
                         piratesTitle.style.top = "10%";
@@ -279,7 +271,21 @@
                         if(bottom > sec3Top+sec3El.offsetHeight){
                             opacity = 1 - (bottom -sec3Top+sec3El.offsetHeight-1000)/1000;
                         }
-                        
+
+                        if(secProgress > 1500){
+                            piratesTextShow(piratesTxt1);
+                            piratesTextHide(piratesTxt2);
+                        }
+                        if(secProgress > 2500 ){
+                            piratesTextHide(piratesTxt1);
+                            piratesTextHide(piratesTxt3);
+
+                            piratesTextShow(piratesTxt2);
+                        }
+                        if(secProgress > 3500 ){
+                            piratesTextHide(piratesTxt2);
+                            piratesTextShow(piratesTxt3);
+                        }
                         
                         piratesTitle.style.opacity = opacity;
                         phoneContainer.style.opacity  = opacity;
@@ -287,6 +293,12 @@
                     }else{
                         piratesTitle.style.opacity = 0;
                         phoneContainer.style.opacity  = 0;
+
+                        piratesTxt1.style.opacity  = 0;
+                        piratesTxt2.style.opacity  = 0;
+                        piratesTxt3.style.opacity  = 0;
+
+
                         piratesTitle.style.top = "-50%";
                         phoneContainer.style.top = "-100%";
                     }
@@ -303,6 +315,24 @@
             }
         }
 
+        const piratesTextShow = (el:HTMLElement):void=>{
+            // md: 768
+            console.log(screenW);
+            if(screenW > 768){
+                el.style.opacity = 1;
+                el.style.top = "20%";
+                //el.style.right = "10%";
+            }else{
+                el.style.position = "fixed";
+                el.style.opacity = 1;
+                el.style.bottom = "10%";
+            }
+        }
+
+        const piratesTextHide = (el:HTMLElement):void=>{
+            el.style.opacity = "0";
+            el.style.bottom = "-50%";
+        }
 
         function showTitle(el:HTMLElement):void{
                 el.style.position =  "fixed";
@@ -371,11 +401,17 @@
     .pirates-screen-wrapper{
         width: 45%;
     }
+    .pirates-text {
+        position: relative;
+        transition: 0.4s ease;
+        will-change: transform, bottom, top, right;
+    }
 
 </style>
 
 <!-- 컨테이너 -->
 <div id="personalPrjContainer" class="my-20 relative bg-black text-white">
+    <!--인트로 타이틀 -->
     <section id="sec1" class="sec1-wrapper flex justify-center items-center">
         <div id = "personalTitle" class="poersonal-title opacity-0">
             <h2  class="w-full  top-0 w-full  break-keep text-4xl text-center font-nanumb md:text-5xl">Personal Project</h2>
@@ -383,6 +419,7 @@
         <div>
     </section>
 
+    <!-- in Studio -->
     <section id="sec2" class="sec2-wrapper flex justify-center items-center ">
         <!--프로젝트 제목-->
         <div id="inTitle" class="fixed opacity-0">
@@ -400,22 +437,21 @@
                 </div>
             </div>
         </div>
-            <!-- 소개글 -->
-            <div class="text-2xl font-nanumb font-bold w-full mx-5 md:mx-10">
-                <div id="inText1" class="in-text fixed w-full flex justify-center items-center opacity-0">
-                    <p class="w-full md:w-1/2">현재 개발중인 자기 소개 및 포트폴리오 소개 사이트 입니다.</p>
-                </div>
-                <div id="inText2" class="in-text fixed w-full flex justify-center items-center opacity-0">
-                    <p class="w-full md:w-1/2">SvelteKit, TypeScript, Tailwind CSS를 사용 하였습니다.</p>
-                </div>
-                <div id="inText3" class="in-text fixed w-full flex justify-center items-center opacity-0">
-                    <p class="w-full md:w-1/2">Github actions, docker, EC2, ECR을 활용해 CI/CD를 구성 하였습니다.</p>
-                </div>
+        <!-- 소개글 -->
+        <div class="text-2xl font-nanumb font-bold w-full mx-5 md:mx-10">
+            <div id="inText1" class="in-text fixed w-full flex justify-center items-center opacity-0">
+                <p class="w-full md:w-1/2">현재 개발중인 자기 소개 및 포트폴리오 소개 사이트 입니다.</p>
             </div>
-
-            
+            <div id="inText2" class="in-text fixed w-full flex justify-center items-center opacity-0">
+                <p class="w-full md:w-1/2">SvelteKit, TypeScript, Tailwind CSS를 사용 하였습니다.</p>
+            </div>
+            <div id="inText3" class="in-text fixed w-full flex justify-center items-center opacity-0">
+                <p class="w-full md:w-1/2">Github actions, docker, EC2, ECR을 활용해 CI/CD를 구성 하였습니다.</p>
+            </div>
+        </div>
     </section>
 
+    <!-- the Pirates -->
     <section id="sec3" class="sec3-wrapper flex justify-center items-center">
         <div class="sea-bg w-full h-screen fixed">
 
@@ -426,7 +462,7 @@
             <!-- <img src="img/pirates_icon.png" class=" w-1/4" alt="the Pirates icon"/> -->
         </div>
         <!-- 모바일 컨테이너 -->
-        <div id = "phoneContainer" class="monitor-container w-1/3  opacity-0  fixed ">
+        <div id = "phoneContainer" class="monitor-container w-full md:w-1/3  md:right-1/2 opacity-0  fixed ">
             <img src="img/phoneFrame.png" class="monitor-img relative" alt="In Studio Screen shoot4"/>
             <div class="pirates-screen-container absolute flex justify-center items-center overflow-hidden">
                 <div id="piratesScreenWrapper" class="pirates-screen-wrapper absolute top-0">
@@ -435,6 +471,19 @@
                     <img src="img/thePirates3.webp" class="relative" alt="In Studio Screen shoot1"/>
                     <img src="img/thePirates4.webp" class="relative" alt="In Studio Screen shoot1"/>
                 </div>
+            </div>
+        </div>
+
+        <!-- 소개글 -->
+        <div class="text-2xl fixed font-nanumb font-bold w-full h-full mx-5 md:mx-10  md:w-1/2 md:top-0 md:right-0">
+            <div id="piratesTxt1" class="pirates-text  w-full flex justify-center items-center opacity-0">
+                <p class="w-full md:w-1/2">Html 온라인 텍스트 RPG 게임 입니다.</p>
+            </div>
+            <div id="piratesTxt2" class="pirates-text  w-full flex justify-center items-center opacity-0">
+                <p class="w-full md:w-1/2">채팅, 직업별스킬, 실시간 전투, 펫, 상점, 무기강화, 파티 사냥등이 구현 되어 있습니다.</p>
+            </div>
+            <div id="piratesTxt3" class="pirates-text  w-full flex justify-center items-center opacity-0">
+                <p class="w-full md:w-1/2">React, NodeJS, MongoDB 기반으로 만들어져 있습니다.</p>
             </div>
         </div>
         
