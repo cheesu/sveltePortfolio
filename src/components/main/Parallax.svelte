@@ -62,12 +62,10 @@
                 if (entry.isIntersecting) {
                 // 요소가 뷰포트 내에서 보이는 경우
                 // 필요한 작업을 수행합니다.
-                console.log("보인다");
                 document.addEventListener('scroll', throttledScrollHandler);
                 } else {
                 // 요소가 뷰포트 내에서 보이지 않는 경우
                 // 필요한 작업을 수행합니다.
-                console.log("안보인다");
                 document.removeEventListener('scroll', throttledScrollHandler);
                
                 }
@@ -99,6 +97,7 @@
         //섹션3 해적 컨텐츠 아이템
         const phoneContainer: HTMLElement | null = document.getElementById('phoneContainer');
         const piratesScreenWrapper: HTMLElement | null = document.getElementById('piratesScreenWrapper');
+        const piratesImgs: HTMLCollectionOf<HTMLImageElement> = piratesScreenWrapper?.children as HTMLCollectionOf<HTMLImageElement>;
         const piratesTxt1: HTMLElement | null = document.getElementById('piratesTxt1');
         const piratesTxt2: HTMLElement | null = document.getElementById('piratesTxt2');
         const piratesTxt3: HTMLElement | null = document.getElementById('piratesTxt3');
@@ -107,6 +106,8 @@
         //섹션4 해적 0.5 
         const phoneContainer2: HTMLElement | null = document.getElementById('phoneContainer2');
         const piratesMScreenWrapper: HTMLElement | null = document.getElementById('piratesMScreenWrapper');
+        const piratesMImgs: HTMLCollectionOf<HTMLImageElement> = piratesMScreenWrapper?.children as HTMLCollectionOf<HTMLImageElement>;
+
         const piratesMTxt1: HTMLElement | null = document.getElementById('piratesMTxt1');
         const piratesMTxt2: HTMLElement | null = document.getElementById('piratesMTxt2');
         const piratesMTxt3: HTMLElement | null = document.getElementById('piratesMTxt3');
@@ -280,18 +281,38 @@
                         }
 
                         if(secProgress > 1500){
+                            piratesImgs[0].style.width = "100%";
+                            piratesImgs[1].style.width = "0%";
+                            piratesImgs[2].style.width = "0%";
+                            piratesImgs[3].style.width = "0%";
+
                             piratesTextShow(piratesTxt1);
                             piratesTextHide(piratesTxt2);
                         }
                         if(secProgress > 2500 ){
+                            piratesImgs[0].style.width = "0%";
+                            piratesImgs[1].style.width = "100%";
+                            piratesImgs[2].style.width = "0%";
+                            piratesImgs[3].style.width = "0%";
                             piratesTextHide(piratesTxt1);
                             piratesTextHide(piratesTxt3);
 
                             piratesTextShow(piratesTxt2);
                         }
                         if(secProgress > 3500 ){
+                            piratesImgs[0].style.width = "0%";
+                            piratesImgs[1].style.width = "0%";
+                            piratesImgs[2].style.width = "100%";
+                            piratesImgs[3].style.width = "0%";
                             piratesTextHide(piratesTxt2);
                             piratesTextShow(piratesTxt3);
+                        }
+
+                        if(secProgress > 4500 ){
+                            piratesImgs[0].style.width = "0%";
+                            piratesImgs[1].style.width = "0%";
+                            piratesImgs[2].style.width = "0%";
+                            piratesImgs[3].style.width = "100%";
                         }
                         
                         piratesTitle.style.opacity = opacity;
@@ -329,17 +350,31 @@
                         if(bottom > sec4Top+sec4H){
                             opacity = ((sec4Top+sec4H-top)/screenH/2);
                         }
+
+                        
                         if(secProgress > 1500){
+                            piratesMImgs[0].style.width = "100%";
+                            piratesMImgs[1].style.width = "0%";
+                            piratesMImgs[2].style.width = "0%";
+
                             piratesTextShow(piratesMTxt1);
                             piratesTextHide(piratesMTxt2);
                         }
                         if(secProgress > 2500 ){
+
+                            piratesMImgs[0].style.width = "0%";
+                            piratesMImgs[1].style.width = "100%";
+                            piratesMImgs[2].style.width = "0%";
+
                             piratesTextHide(piratesMTxt1);
                             piratesTextHide(piratesMTxt3);
 
                             piratesTextShow(piratesMTxt2);
                         }
                         if(secProgress > 3500 ){
+                            piratesMImgs[0].style.width = "0%";
+                            piratesMImgs[1].style.width = "0%";
+                            piratesMImgs[2].style.width = "100%"
                             piratesTextHide(piratesMTxt2);
                             piratesTextShow(piratesMTxt3);
                         }
@@ -450,12 +485,12 @@
     }
 
     .pirates-screen-container{
-        width: 100%;
+        width: 94%;
         height: 89%;
         top : 5%;
     }
     .pirates-screen-wrapper{
-        width: 45%;
+        
     }
     .pirates-text {
         position: relative;
@@ -478,6 +513,11 @@
         top: -16.5%;
         border-radius: 28px;
         transform: translate3d(65.5%, 15.1%, 0px) scale(1.1) rotate(79deg) rotateX(-3deg) rotateY(56deg) rotateZ(-31deg)
+    }
+
+    .prj-screen{
+        transition: 0.4s ease;
+        will-change: transform, bottom, top, right, auto;
     }
 
 </style>
@@ -534,14 +574,14 @@
             <!-- <img src="img/pirates_icon.png" class=" w-1/4" alt="the Pirates icon"/> -->
         </div>
         <!-- 모바일 컨테이너 -->
-        <div id = "phoneContainer" class="monitor-container w-full md:w-1/3  md:right-1/2 opacity-0  fixed ">
+        <div id = "phoneContainer" class="monitor-container flex justify-center items-center w-1/2 md:w-1/3  md:right-1/2 opacity-0  fixed ">
             <img src="img/phoneFrame.png" class="monitor-img relative" alt="In Studio Screen shoot4"/>
             <div class="pirates-screen-container absolute flex justify-center items-center overflow-hidden">
-                <div id="piratesScreenWrapper" class="pirates-screen-wrapper absolute top-0">
-                    <img src="img/thePirates1.webp" class="relative" alt="In Studio Screen shoot1"/>
-                    <img src="img/thePirates2.webp" class="relative" alt="In Studio Screen shoot1"/>
-                    <img src="img/thePirates3.webp" class="relative" alt="In Studio Screen shoot1"/>
-                    <img src="img/thePirates4.webp" class="relative" alt="In Studio Screen shoot1"/>
+                <div id="piratesScreenWrapper" class="pirates-screen-wrapper absolute top-0 w-full md:w-1/2">
+                    <img src="img/thePirates1.webp" class="prj-screen absolute w-full" alt="In Studio Screen shoot1"/>
+                    <img src="img/thePirates2.webp" class="prj-screen absolute w-0" alt="In Studio Screen shoot1"/>
+                    <img src="img/thePirates3.webp" class="prj-screen absolute w-0" alt="In Studio Screen shoot1"/>
+                    <img src="img/thePirates4.webp" class="prj-screen absolute w-0" alt="In Studio Screen shoot1"/>
                 </div>
             </div>
         </div>
@@ -572,9 +612,9 @@
             <img src="img/phoneFrame2.png" class="monitor-img relative" alt="In Studio Screen shoot4"/>
             <div class="piratesM-screen-container absolute flex justify-center items-center overflow-hidden">
                 <div id="piratesMScreenWrapper" class="piratesM-screen-wrapper absolute top-0">
-                    <img src="img/shooting.png" class="absolute w-full" alt="Pirates shooting Game Screen shoot"/>
-                    <img src="img/rhythm.png" class="absolute w-0" alt="Pirates rhythm Game Screen shoot"/>
-                    <img src="img/textGame.png" class="absolute w-0" alt="Pirates text Game Screen shoot"/>
+                    <img src="img/shooting.png" class="prj-screen absolute w-full" alt="Pirates shooting Game Screen shoot"/>
+                    <img src="img/rhythm.png" class="prj-screen absolute w-0" alt="Pirates rhythm Game Screen shoot"/>
+                    <img src="img/textGame.png" class="prj-screen absolute w-0" alt="Pirates text Game Screen shoot"/>
                 </div>
             </div>
         </div>
