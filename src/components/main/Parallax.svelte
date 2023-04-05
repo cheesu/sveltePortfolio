@@ -50,6 +50,7 @@
     onMount(() => {
         window.scroll({top : 0, behavior: 'smooth'});
         const screenW:number = screen.availWidth;
+        const screenH:number = screen.availHeight;
         //throttling을 적용
         const throttledScrollHandler = throttle(scrollHandler, 10);
        
@@ -84,7 +85,7 @@
 
         const inTitle: HTMLElement | null = document.getElementById('inTitle');
         const piratesTitle: HTMLElement | null = document.getElementById('piratesTitle');
-        const sec3Title: HTMLElement | null = document.getElementById('sec3Title');
+        const piratesTitle2: HTMLElement | null = document.getElementById('piratesTitle2');
         const sec4Title: HTMLElement | null = document.getElementById('sec4Title');
 
 
@@ -101,6 +102,14 @@
         const piratesTxt1: HTMLElement | null = document.getElementById('piratesTxt1');
         const piratesTxt2: HTMLElement | null = document.getElementById('piratesTxt2');
         const piratesTxt3: HTMLElement | null = document.getElementById('piratesTxt3');
+        
+
+        //섹션4 해적 0.5 
+        const phoneContainer2: HTMLElement | null = document.getElementById('phoneContainer2');
+        const piratesMScreenWrapper: HTMLElement | null = document.getElementById('piratesMScreenWrapper');
+        const piratesMTxt1: HTMLElement | null = document.getElementById('piratesMTxt1');
+        const piratesMTxt2: HTMLElement | null = document.getElementById('piratesMTxt2');
+        const piratesMTxt3: HTMLElement | null = document.getElementById('piratesMTxt3');
         
         
 
@@ -164,10 +173,10 @@
 
                 window.requestAnimationFrame(() => {
                     let top:number = document.documentElement.scrollTop;
-                    let bottom:number = top + screen.availHeight;
+                    let bottom:number = top + screenH;
 
                     // 섹션1 타이틀
-                    if(top > sec1Top && top < sec1Top+sec1El.offsetHeight){
+                    if(top > sec1Top && top < sec1Top+sec1H){
                         let secProgress:number = top - sec1Top;
                         title.style.position = "fixed";
                         let opacity:number = secProgress/1000;
@@ -189,7 +198,7 @@
 
 
                     // 섹션2 포폴사이트
-                    if(top > sec2Top && top < sec2Top+sec2El.offsetHeight){
+                    if(top > sec2Top && top < sec2Top+sec2H){
                         let secProgress:number = top - sec2Top;
                         let opacity:number = secProgress/1000;
                         inTitle.style.top = "10%";
@@ -203,8 +212,8 @@
                             inScreenWrapper.style.transform ="translateY(0%)";
                         }
 
-                        if(bottom > sec2Top+sec2El.offsetHeight){
-                            opacity = 1 - (bottom -sec2Top+sec2El.offsetHeight-10000)/1000;
+                        if(bottom > sec2Top+sec2H){
+                            opacity = 1 - (bottom -sec2Top+sec2H-10000)/1000;
                         }
 
                         if(secProgress > 1500){
@@ -252,9 +261,7 @@
                     }
 
                     // 섹션3 해적
-                    if(top > sec3Top && top < sec3Top+sec3El.offsetHeight){
-
-                        
+                    if(top > sec3Top && top < sec3Top+sec3H){
                         let secProgress:number = top - sec3Top;
                         let opacity:number = secProgress/1000;
                         piratesTitle.style.top = "10%";
@@ -268,8 +275,8 @@
                             piratesScreenWrapper.style.transform ="translateY(0%)";
                         }
 
-                        if(bottom > sec3Top+sec3El.offsetHeight){
-                            opacity = 1 - (bottom -sec3Top+sec3El.offsetHeight-1000)/1000;
+                        if(bottom > sec3Top+sec3H){
+                            opacity = ((sec3Top+sec3H-top)/screenH/2);
                         }
 
                         if(secProgress > 1500){
@@ -303,6 +310,56 @@
                         phoneContainer.style.top = "-100%";
                     }
 
+
+                    // 섹션4 해적 0.5
+                    if(top > sec4Top && top < sec4Top+sec4H){
+                        let secProgress:number = top - sec4Top;
+                        let opacity:number = secProgress/1000;
+                        piratesTitle2.style.top = "10%";
+                        phoneContainer2.style.top = "20%";
+
+                        if(secProgress > 1500){
+                            let transY:number = (secProgress-1500)/50*-1;
+                            let transformY : string = "translateY("+transY+"%)";
+                            piratesMScreenWrapper.style.transform = transformY;
+                        }else{
+                            piratesMScreenWrapper.style.transform ="translateY(0%)";
+                        }
+
+                        if(bottom > sec4Top+sec4H){
+                            opacity = ((sec4Top+sec4H-top)/screenH/2);
+                        }
+                        if(secProgress > 1500){
+                            piratesTextShow(piratesMTxt1);
+                            piratesTextHide(piratesMTxt2);
+                        }
+                        if(secProgress > 2500 ){
+                            piratesTextHide(piratesMTxt1);
+                            piratesTextHide(piratesMTxt3);
+
+                            piratesTextShow(piratesMTxt2);
+                        }
+                        if(secProgress > 3500 ){
+                            piratesTextHide(piratesMTxt2);
+                            piratesTextShow(piratesMTxt3);
+                        }
+                        
+                        piratesTitle2.style.opacity = opacity;
+                        phoneContainer2.style.opacity  = opacity;
+
+                    }else{
+                        piratesTitle2.style.opacity = 0;
+                        phoneContainer2.style.opacity  = 0;
+
+
+                        piratesTextHide(piratesMTxt1);
+                        piratesTextHide(piratesMTxt2);
+                        piratesTextHide(piratesMTxt3);
+
+                        piratesTitle2.style.top = "-50%";
+                        phoneContainer2.style.top = "-100%";
+                    }
+
                     
                     
 
@@ -317,7 +374,6 @@
 
         const piratesTextShow = (el:HTMLElement):void=>{
             // md: 768
-            console.log(screenW);
             if(screenW > 768){
                 el.style.opacity = 1;
                 el.style.top = "20%";
@@ -369,7 +425,7 @@
         height : 8000px;
     }
     .sec4-wrapper{
-        height : 2000px;
+        height : 8000px;
     }
 
     .monitor-img{
@@ -405,6 +461,23 @@
         position: relative;
         transition: 0.4s ease;
         will-change: transform, bottom, top, right;
+    }
+
+
+    .piratesM-screen-wrapper{
+        width: 100%;
+        
+    }
+    .piratesM-screen-wrapper > img {
+        /* height: 457px; */
+    }
+
+    .piratesM-screen-container{
+        width: 41%;
+        height: 97%;
+        top: -16.5%;
+        border-radius: 28px;
+        transform: translate3d(65.5%, 15.1%, 0px) scale(1.1) rotate(79deg) rotateX(-3deg) rotateY(56deg) rotateZ(-31deg)
     }
 
 </style>
@@ -454,7 +527,6 @@
     <!-- the Pirates -->
     <section id="sec3" class="sec3-wrapper flex justify-center items-center">
         <div class="sea-bg w-full h-screen fixed">
-
         </div>
         <!--프로젝트 제목-->
         <div id="piratesTitle" class="pirates-title fixed opacity-0">
@@ -486,11 +558,38 @@
                 <p class="w-full md:w-1/2">React, NodeJS, MongoDB 기반으로 만들어져 있습니다.</p>
             </div>
         </div>
-        
-
     </section>
 
-    <section id="sec4" class="sec4-wrapper flex justify-center items-center bg-red-900">
-        
+    <!-- Pirates 0.5 -->
+    <section id="sec4" class="sec4-wrapper flex justify-center items-center">
+        <!--프로젝트 제목-->
+        <div id="piratesTitle2" class="pirates-title fixed opacity-0">
+            <h3 class="text-2xl font-nanumb font-bold mx-5 md:mx-10">The Pirates 0.5</h3>
+            <!-- <img src="img/pirates_icon.png" class=" w-1/4" alt="the Pirates icon"/> -->
+        </div>
+        <!-- 모바일 컨테이너 -->
+        <div id = "phoneContainer2" class="monitor-container w-full md:w-1/3  md:right-1/2 opacity-0  fixed ">
+            <img src="img/phoneFrame2.png" class="monitor-img relative" alt="In Studio Screen shoot4"/>
+            <div class="piratesM-screen-container absolute flex justify-center items-center overflow-hidden">
+                <div id="piratesMScreenWrapper" class="piratesM-screen-wrapper absolute top-0">
+                    <img src="img/shooting.png" class="absolute w-full" alt="Pirates shooting Game Screen shoot"/>
+                    <img src="img/rhythm.png" class="absolute w-0" alt="Pirates rhythm Game Screen shoot"/>
+                    <img src="img/textGame.png" class="absolute w-0" alt="Pirates text Game Screen shoot"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- 소개글 -->
+        <div class="text-2xl fixed font-nanumb font-bold w-full h-full mx-5 md:mx-10  md:w-1/2 md:top-0 md:right-0">
+            <div id="piratesMTxt1" class="pirates-text  w-full flex justify-center items-center opacity-0">
+                <p class="w-full md:w-1/2">The Pirates의 모바일 싱글 버전 입니다.</p>
+            </div>
+            <div id="piratesMTxt2" class="pirates-text  w-full flex justify-center items-center opacity-0">
+                <p class="w-full md:w-1/2">슈팅게임 , 리듬게임, 텍스트게임으로 이루어져 있습니다.</p>
+            </div>
+            <div id="piratesMTxt3" class="pirates-text  w-full flex justify-center items-center opacity-0">
+                <p class="w-full md:w-1/2">Java로 만들었으며 3가지 게임이 하나의 캐릭터를 사용하여 경험치가 공유 됩니다.</p>
+            </div>
+        </div>
     </section>
 </div>
