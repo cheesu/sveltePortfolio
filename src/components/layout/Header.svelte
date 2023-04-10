@@ -1,6 +1,15 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { writable } from "svelte/store";
+    import { page } from '$app/stores';
+
+
+    let currentPage:string = '';
+      $: {
+        currentPage = $page.url.pathname;
+      }
+
+
   
     interface MenuItem {
       title: string;
@@ -37,8 +46,15 @@
     function handleMouseLeave():void {
       isMenuOpen.set(false);
     }
-  
+
+
+    // 디폴트 메인 뷰
+    let mainViewH:number = 0;
+
     onMount(() => {
+
+      console.log("온 마운트");
+
       // 마운트되고 잡아놓을 놈들 미리 잡아놓기
       const headerEl: HTMLElement | null = document.getElementById('headerNav');
       const bugerEl: HTMLElement | null = document.getElementById('bugerBar');
@@ -94,7 +110,6 @@
       });
 
       //메인뷰 높이 감지
-      let mainViewH:number = 0;
       if (mainEl) {
         mainViewH = mainEl.offsetHeight;
       }
@@ -116,7 +131,7 @@
         } else {
           // 스크롤 업
           headerView();
-          if(mainViewH > currentScrollTop){
+          if(mainViewH > currentScrollTop &&  currentPage === "/"){
             headerTrans();
           }
         }
@@ -132,7 +147,7 @@
 
         headerEl.addEventListener("mouseleave", () => {
           // 마우스 아웃 되었을때 코드
-          if(mainViewH < currentScrollTop){
+          if(mainViewH < currentScrollTop || currentPage !== "/"){
             //메인뷰 아래
             headerWhite();
           }else{
