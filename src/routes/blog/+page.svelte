@@ -58,20 +58,28 @@
        return postData;
   });
 
+  function hrefLink():void {
+      window.open(blogInfo.url);
+    }
+
   </script>
 
-  <h2 class="mt-20 w-full text-center ">블로그 소개</h2>
-    
-  <div>
-    <div class=" w-1/4">
-      <img class="object-cover" src={blogInfo.profileImageUrl} alt="Blog profileImage" />
+  <h2 class="mt-20 w-full text-center font-nanumb font-bold">블로그 소개</h2>
+
+  <div class="w-full md:flex justify-center items-center">
+    <div class = "block m-10 md:flex rounded-lg overflow-hidden shadow-md  justify-center items-center  md:w-1/2">
+      <div class="bg-white  hover:cursor-pointer rounded-lg overflow-hidden shadow-md w-full md:w-1/3" >
+        <img class="object-cover" src={blogInfo.profileThumbnailImageUrl} alt="Blog profileImage" on:click={hrefLink} on:keydown={hrefLink}/>
+      </div>
+      <div class="p-4 block">
+        <h3 class="text-lg font-medium mb-2">{blogInfo.name}</h3>
+        {blogInfo.description}<br>
+        <span>post : </span>{blogInfo.statistics.post} <br>
+        <span>comment : </span>{blogInfo.statistics.comment} <br>
+        <span>guestbook : </span>{blogInfo.statistics.guestbook} <br>
+        <span>trackback : </span>{blogInfo.statistics.trackback} <br>
+      </div>
     </div>
-    {blogInfo.name}<br>
-    {blogInfo.description}<br>
-    <span>post : </span>{blogInfo.statistics.post} <br>
-    <span>comment : </span>{blogInfo.statistics.comment} <br>
-    <span>guestbook : </span>{blogInfo.statistics.guestbook} <br>
-    <span>trackback : </span>{blogInfo.statistics.trackback} <br>
   </div>
 
   <div class="h-screen">
