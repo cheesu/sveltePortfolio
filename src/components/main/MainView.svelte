@@ -52,8 +52,6 @@
       const letters:string[] = [
         "The \n CREATIVE!",
         "DEVEOPER \n IN CHEESU",
-        "이 사이트는 \n 개발중입니다 \n 조금만. \n 기다려 주세요."
-
       ];
 
       // 글자 입력 속도
