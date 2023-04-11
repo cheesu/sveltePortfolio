@@ -4,12 +4,12 @@
     import CardList from '$components/card/CardList.svelte';
     import type { PageData } from './$types';
 	  export let data: PageData;
+
     
-
   console.log(data.postArr);
-  console.log(data.blogData.blogs[0]);
+  console.log(data.blogData[0]);
 
-  const blogInfo:blogInfo = data.blogData.blogs[0];
+  const blogInfo:blogInfo = data.blogData[0];
 
   interface blogInfo {
       name: string;
@@ -60,7 +60,7 @@
 
   function hrefLink():void {
       window.open(blogInfo.url);
-    }
+  }
 
   </script>
 
@@ -69,7 +69,7 @@
   <div class="w-full md:flex justify-center items-center">
     <div class = "block m-10 md:flex rounded-lg overflow-hidden shadow-md  justify-center items-center  md:w-1/2">
       <div class="bg-white  hover:cursor-pointer rounded-lg overflow-hidden shadow-md w-full md:w-1/3" >
-        <img class="object-cover" src={blogInfo.profileThumbnailImageUrl} alt="Blog profileImage" on:click={hrefLink} on:keydown={hrefLink}/>
+        <img class="object-cover" src={blogInfo.profileImageUrl} alt="Blog profileImage" on:click={hrefLink} on:keydown={hrefLink}/>
       </div>
       <div class="p-4 block">
         <h3 class="text-lg font-medium mb-2">{blogInfo.name}</h3>
