@@ -31,7 +31,7 @@ on:
       - main
 
 env:
-  ECR_REGISTRY: 666460501111.dkr.ecr.ap-northeast-2.amazonaws.com/instudio
+  ECR_REGISTRY: 666460501111.dkr.ecr.ap-northeast-2.amazonaws.com
   ECR_REPOSITORY: instudio
   AWS_REGION: ap-northeast-2
   IMG_TAG: latest
