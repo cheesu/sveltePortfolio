@@ -16,7 +16,7 @@
 
 	const menuItems: MenuItem[] = [
 		{ title: 'Home', url: '/' },
-		{ title: 'Blog(중단)', url: '/blog' },
+		{ title: 'Blog(서비스종료)', url: '/blog' },
 		{ title: 'Youtube', url: '/' },
 		{ title: 'SNS', url: '/' },
 		{ title: 'Contact', url: '/contact' }
