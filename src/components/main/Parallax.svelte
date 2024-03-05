@@ -117,6 +117,7 @@
 			if (!ticking) {
 				window.requestAnimationFrame(() => {
 					let top: number = document.documentElement.scrollTop;
+					const windowHeight = window.innerHeight;
 					let bottom: number = top + screenH;
 
 					// 섹션1 타이틀
@@ -312,7 +313,17 @@
 					}
 
 					// 섹션4 해적 0.5
-					if (top > sec4Top && top < sec4Top + sec4H) {
+					console.log(
+						'top',
+						top,
+						'sec4Top:',
+						sec4Top,
+						'sec4H:',
+						sec4H,
+						'windowHeight',
+						windowHeight
+					);
+					if (top > sec4Top && top < sec4Top + sec4H - windowHeight / 2) {
 						//엘리먼트 체크
 						if (
 							sec4El === null ||
