@@ -1,9 +1,12 @@
 <script lang="ts">
 	import CardList from '$components/card/CardList.svelte';
 	import type { PageData } from './$types';
+
 	export let data: PageData;
 
-	const blogInfo: blogInfo = data.blogData[0];
+	const blogDataArray = Array.isArray(data?.blogData) ? data.blogData : [];
+	const blogInfo: blogInfo = blogDataArray[0] || {};
+	console.log('blogInfo', blogInfo);
 
 	interface blogInfo {
 		name: string;
@@ -64,21 +67,27 @@
 		<div
 			class="bg-white  hover:cursor-pointer rounded-lg overflow-hidden shadow-md w-full md:w-1/3"
 		>
-			<img
-				class="object-cover"
-				src={blogInfo?.profileImageUrl}
-				alt="Blog profileImage"
-				on:click={hrefLink}
-				on:keydown={hrefLink}
-			/>
+			{#if blogInfo && Object.keys(blogInfo).length !== 0}
+				<img
+					class="object-cover"
+					src={blogInfo?.profileImageUrl}
+					alt="Blog profileImage"
+					on:click={hrefLink}
+					on:keydown={hrefLink}
+				/>
+			{/if}
 		</div>
 		<div class="p-4 block">
-			<h3 class="text-lg font-medium mb-2">{blogInfo?.name}</h3>
-			{blogInfo?.description}<br />
-			<span>post : </span>{blogInfo?.statistics.post} <br />
-			<span>comment : </span>{blogInfo?.statistics.comment} <br />
-			<span>guestbook : </span>{blogInfo?.statistics.guestbook} <br />
-			<span>trackback : </span>{blogInfo?.statistics.trackback} <br />
+			{#if blogInfo && Object.keys(blogInfo).length === 0}
+				<h3 class="text-lg font-medium mb-2">티스토리 API 운영이 종료되었습니다.</h3>
+			{:else}
+				<h3 class="text-lg font-medium mb-2">{blogInfo.name}</h3>
+				{blogInfo.description}<br />
+				<span>post : </span>{blogInfo.statistics.post} <br />
+				<span>comment : </span>{blogInfo.statistics.comment} <br />
+				<span>guestbook : </span>{blogInfo.statistics.guestbook} <br />
+				<span>trackback : </span>{blogInfo.statistics.trackback} <br />
+			{/if}
 		</div>
 	</div>
 </div>

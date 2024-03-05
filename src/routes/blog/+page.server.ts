@@ -6,8 +6,6 @@ import { load as cheerioLoad } from 'cheerio';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async function () {
-	//const test:string = CLIENT_ID;
-	//const key:string = SC_KEY;
 	const response = await fetch(
 		'https://www.tistory.com/apis/post/list?access_token=' +
 			TISTORY_ACTK +
@@ -16,10 +14,16 @@ export const load: PageServerLoad = async function () {
 	const responseBlogInfo = await fetch(
 		'https://www.tistory.com/apis/blog/info?access_token=' + TISTORY_ACTK + '&output=json'
 	);
-	let data = await response.json();
-	let postArr = data.tistory.item.posts;
+	const data = await response.json();
+	if (data?.tistory?.status !== 200) {
+		return {
+			postArr: [],
+			blogData: {}
+		};
+	}
+	let postArr = data?.tistory?.item?.posts;
 
-	let blogData = await responseBlogInfo.json();
+	const blogData = await responseBlogInfo.json();
 
 	const blogInfo = await Promise.all(
 		blogData.tistory.item.blogs.map(async (item: any) => {
