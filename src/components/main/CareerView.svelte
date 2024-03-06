@@ -36,7 +36,7 @@
 				{
 					date: '2023.04 ~ 2023.05',
 					projectName: 'CBT(ICS WMS- 물류창고 관리 시스템)',
-					projectStack: 'React, Next.js, Redux, RTK query, styled-component, ',
+					projectStack: 'React, Next.js, Redux, React query, TypeScript , MUI, styled-component, ',
 					area: '입출고 관리및 정산 관리 화면 개발'
 				}
 			]
