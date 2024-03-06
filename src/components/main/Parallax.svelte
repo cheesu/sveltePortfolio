@@ -118,6 +118,7 @@
 				window.requestAnimationFrame(() => {
 					let top: number = document.documentElement.scrollTop;
 					const windowHeight = window.innerHeight;
+					const windowWidth = window.innerWidth;
 					let bottom: number = top + screenH;
 
 					// 섹션1 타이틀
@@ -245,6 +246,8 @@
 						piratesTitle.style.top = '10%';
 						phoneContainer.style.top = '20%';
 
+						phoneContainer.style.maxWidth = (windowHeight / 10) * 3 + 'px';
+
 						if (bottom > sec3Top + sec3H) {
 							opacity = (sec3Top + sec3H - top) / screenH / 2;
 						}
@@ -313,16 +316,6 @@
 					}
 
 					// 섹션4 해적 0.5
-					console.log(
-						'top',
-						top,
-						'sec4Top:',
-						sec4Top,
-						'sec4H:',
-						sec4H,
-						'windowHeight',
-						windowHeight
-					);
 					if (top > sec4Top && top < sec4Top + sec4H - windowHeight / 2) {
 						//엘리먼트 체크
 						if (
