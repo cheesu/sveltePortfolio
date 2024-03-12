@@ -18,7 +18,7 @@
 		{ title: 'Home', url: '/' },
 		{ title: 'Blog(종료 예정)', url: '/blog' },
 		{ title: 'GitHub', url: '/github' },
-		{ title: 'Youtube', url: '/contact' },
+		{ title: 'Youtube', url: '/youtube' },
 
 		{ title: 'Contact', url: '/contact' }
 	];

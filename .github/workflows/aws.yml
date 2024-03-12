@@ -58,10 +58,15 @@ jobs:
           echo "CLIENT_ID=$TISTORY_APP_ID" >> .env
           echo "SC_KEY=$TISTORY_SC_KEY" >> .env
           echo "TISTORY_ACTK=$TISTORY_ACCESS_TOKEN" >> .env
+          echo "YOUTUBE=$YOUTUBE_KEY" >> .env
+          echo "CHANAL=$CHANAL_ID" >> .env
+
         env:
           TISTORY_APP_ID: ${{ secrets.TISTORY_APP_ID }}
           TISTORY_SC_KEY: ${{ secrets.TISTORY_SC_KEY }}
           TISTORY_ACCESS_TOKEN: ${{ secrets.TISTORY_ACCESS_TOKEN }}
+          YOUTUBE_KEY: ${{ secrets.YOUTUBE_KEY }}
+          CHANAL_ID: ${{ secrets.CHANAL_ID }}
 
       - name: Build Docker image
         run: |
