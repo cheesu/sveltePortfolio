@@ -8,8 +8,6 @@
 	const githubInfo: GithubUser = data.githubInfo;
 	const gitRepoArray = Array.isArray(data?.gitrepoList) ? data?.gitrepoList : [];
 
-	console.log(gitRepoArray[0]);
-
 	interface GithubUser {
 		login: string;
 		id: number;
