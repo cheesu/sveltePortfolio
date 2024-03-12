@@ -8,7 +8,7 @@
 	const githubInfo: GithubUser = data.githubInfo;
 	const gitRepoArray = Array.isArray(data?.gitrepoList) ? data?.gitrepoList : [];
 
-	console.log(githubInfo);
+	console.log(gitRepoArray[0]);
 
 	interface GithubUser {
 		login: string;
@@ -58,7 +58,7 @@
 		console.log(item.title);
 		let postData: postItem = {
 			title: item.name,
-			postUrl: item.postUrl,
+			postUrl: item.html_url,
 			description: item.description,
 			imageUrl:
 				'https://velog.velcdn.com/images/www_1216/post/9a190c41-3655-4feb-ba6c-da532ae88a98/ba9a7cbd.png'
