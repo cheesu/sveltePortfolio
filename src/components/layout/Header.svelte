@@ -17,8 +17,9 @@
 	const menuItems: MenuItem[] = [
 		{ title: 'Home', url: '/' },
 		{ title: 'Blog(종료 예정)', url: '/blog' },
+		{ title: 'GitHub', url: '/github' },
 		{ title: 'Youtube', url: '/contact' },
-		{ title: 'SNS', url: '/contact' },
+
 		{ title: 'Contact', url: '/contact' }
 	];
 
