@@ -4,14 +4,141 @@ import axios from 'axios';
 import { load as cheerioLoad } from 'cheerio';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async function () {
-	const responseUserInfo = await fetch('https://api.github.com/users/cheesu');
-	const responseRepoInfo = await fetch('https://api.github.com/users/cheesu/repos');
-	const userInfo = await responseUserInfo.json();
-	const repoInfo = await responseRepoInfo.json();
+interface Owner {
+	login: string;
+	id: number;
+	node_id: string;
+	avatar_url: string;
+	gravatar_id: string;
+	url: string;
+	html_url: string;
+	followers_url: string;
+	following_url: string;
+	gists_url: string;
+	starred_url: string;
+	subscriptions_url: string;
+	organizations_url: string;
+	repos_url: string;
+	events_url: string;
+	received_events_url: string;
+	type: string;
+	site_admin: boolean;
+}
 
-	return {
-		githubInfo: userInfo,
-		gitrepoList: repoInfo
-	};
+interface Repository {
+	id: number;
+	node_id: string;
+	name: string;
+	full_name: string;
+	private: boolean;
+	owner: Owner;
+	html_url: string;
+	description: string;
+	fork: boolean;
+	url: string;
+	forks_url: string;
+	keys_url: string;
+	collaborators_url: string;
+	teams_url: string;
+	hooks_url: string;
+	issue_events_url: string;
+	events_url: string;
+	assignees_url: string;
+	branches_url: string;
+	tags_url: string;
+	blobs_url: string;
+	git_tags_url: string;
+	git_refs_url: string;
+	trees_url: string;
+	statuses_url: string;
+	languages_url: string;
+	stargazers_url: string;
+	contributors_url: string;
+	subscribers_url: string;
+	subscription_url: string;
+	commits_url: string;
+	git_commits_url: string;
+	comments_url: string;
+	issue_comment_url: string;
+	contents_url: string;
+	compare_url: string;
+	merges_url: string;
+	archive_url: string;
+	downloads_url: string;
+	issues_url: string;
+	pulls_url: string;
+	milestones_url: string;
+	notifications_url: string;
+	labels_url: string;
+	releases_url: string;
+	deployments_url: string;
+	created_at: string;
+	updated_at: string;
+	pushed_at: string;
+	git_url: string;
+	ssh_url: string;
+	clone_url: string;
+	svn_url: string;
+	homepage: string | null;
+	size: number;
+	stargazers_count: number;
+	watchers_count: number;
+	language: string | null;
+	has_issues: boolean;
+	has_projects: boolean;
+	has_downloads: boolean;
+	has_wiki: boolean;
+	has_pages: boolean;
+	has_discussions: boolean;
+	forks_count: number;
+	mirror_url: string | null;
+	archived: boolean;
+	disabled: boolean;
+	open_issues_count: number;
+	license: string | null;
+	allow_forking: boolean;
+	is_template: boolean;
+	web_commit_signoff_required: boolean;
+	topics: string[];
+	visibility: string;
+	forks: number;
+	open_issues: number;
+	watchers: number;
+	default_branch: string;
+}
+function isValidRepo(repo: any): repo is Repository {
+	return 'created_at' in repo;
+}
+
+export const load: PageServerLoad = async function () {
+	try {
+		const responseUserInfo = await fetch('https://api.github.com/users/cheesu');
+		const responseRepoInfo = await fetch('https://api.github.com/users/cheesu/repos');
+
+		if (!responseUserInfo.ok || !responseRepoInfo.ok) {
+			throw new Error('GitHub API 요청 실패');
+		}
+
+		const userInfo = await responseUserInfo.json();
+		const repoInfo = await responseRepoInfo.json();
+
+		const validRepos = repoInfo.filter(isValidRepo);
+		validRepos.sort((a: Repository, b: Repository) => {
+			const dateA: Date = new Date(a.created_at ?? '');
+			const dateB: Date = new Date(b.created_at ?? '');
+			return dateB.getTime() - dateA.getTime();
+		});
+
+		return {
+			githubInfo: userInfo,
+			gitrepoList: validRepos
+		};
+	} catch (error) {
+		console.error(error);
+		// 에러 처리 로직
+		return {
+			githubInfo: {},
+			gitrepoList: []
+		};
+	}
 };
