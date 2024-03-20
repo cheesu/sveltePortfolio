@@ -19,7 +19,6 @@
 		{ title: 'Blog(API 서비스 종료)', url: '/blog' },
 		{ title: 'GitHub', url: '/github' },
 		{ title: 'Youtube', url: '/youtube' },
-
 		{ title: 'Contact', url: '/contact' }
 	];
 
