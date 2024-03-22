@@ -106,7 +106,7 @@
 	</div>
 </div>
 
-<div class="h-screen">
+<div class="min-h-screen">
 	<h1 class="text-20 p-10">repo list</h1>
 	<CardList {cards} />
 </div>

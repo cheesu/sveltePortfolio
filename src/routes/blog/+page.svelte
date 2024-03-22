@@ -92,7 +92,7 @@
 	</div>
 </div>
 
-<div class="h-screen">
+<div class="min-h-screen">
 	<h1 class="text-20 p-10">최근 포스팅한 게시물</h1>
 	<CardList {cards} />
 </div>
